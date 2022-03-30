@@ -72,12 +72,21 @@ export default {
       }
       if (!this.lastname) {
         this.errors.push("Last name required!!");
+        document.getElementById("lastname-input").classList.add("error");
+      } else {
+        document.getElementById("lastname-input").classList.remove("error");
       }
       if (!this.age) {
         this.errors.push("Age required!!");
+        document.getElementById("age-input").classList.add("error");
+      } else {
+        document.getElementById("age-input").classList.remove("error");
       }
       if (!this.nationalCode) {
         this.errors.push("National code required!!");
+        document.getElementById("code-input").classList.add("error");
+      } else {
+        document.getElementById("code-input").classList.remove("error");
       }
     },
   },
