@@ -64,10 +64,12 @@ export default {
   methods: {
     submit() {
       this.errors = [];
-      if (this.firstname.length === "") {
+      if (!this.firstname) {
         this.errors.push("First name required!!");
         document.getElementById("firstname-input").classList.add("error");
-      } else document.getElementById("firstname-input").classList.add("error");
+      } else {
+        document.getElementById("firstname-input").classList.remove("error");
+      }
       if (!this.lastname) {
         this.errors.push("Last name required!!");
       }
