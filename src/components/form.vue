@@ -1,38 +1,90 @@
 <template>
   <div id="main">
     <div class="signup">
-      <form>
+      <form method="post" v-on:submit.prevent="submit">
         <label for="" aria-hidden="true" id="label">Welcome</label>
         <input
           type="text"
           name="text"
           placeholder="Enter Your Firstname.."
+          v-model="firstname"
           required
+          id="firstname-input"
         />
         <input
           type="text"
           name="text"
-          placeholder="Enter Your Lasttname.."
+          placeholder="Enter Your Lastname.."
+          v-model="lastname"
           required
+          id="lastname-input"
         />
-        <input type="text" name="age" placeholder="Enter Your Age.." required />
+        <input
+          type="text"
+          name="age"
+          placeholder="Enter Your Age.."
+          v-model="age"
+          required
+          id="age-input"
+        />
         <input
           type="text"
           name="text"
           placeholder="Enter Your National code.."
+          v-model="nationalCode"
           required
+          id="code-input"
         />
-        <button class="btn d-block mx-auto px-5" id="signup-btn">
+        <button
+          class="btn d-block mx-auto px-5"
+          id="signup-btn"
+          @click.prevent="submit()"
+        >
           sign up
         </button>
+        <br />
+        <b-alert show dismissible variant="danger" v-if="errors.length > 0">
+          <span v-for="error in errors" :key="error"> {{ error }} <br /> </span>
+        </b-alert>
       </form>
     </div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      errors: [],
+      firstname: "",
+      lastname: "",
+      nationalCode: "",
+      age: "",
+    };
+  },
+  methods: {
+    submit() {
+      this.errors = [];
+      if (this.firstname.length === "") {
+        this.errors.push("First name required!!");
+        document.getElementById("firstname-input").classList.add("error");
+      } else document.getElementById("firstname-input").classList.add("error");
+      if (!this.lastname) {
+        this.errors.push("Last name required!!");
+      }
+      if (!this.age) {
+        this.errors.push("Age required!!");
+      }
+      if (!this.nationalCode) {
+        this.errors.push("National code required!!");
+      }
+    },
+  },
+};
 </script>
 <style scoped>
+.error {
+  border: 2px solid red;
+}
 #main {
   background: linear-gradient(-180deg, #7aaddd 0%, #386092 98%),
     radial-gradient(
@@ -83,13 +135,13 @@ input {
   font-size: 18px;
   margin-top: 50px;
 }
-#signup-btn:hover{
+#signup-btn:hover {
   color: #004085;
   background-color: white;
-  transition: .9s;
+  transition: 0.9s;
   font-weight: 600;
 }
-::placeholder{
+::placeholder {
   font-size: 14px;
 }
 </style>
