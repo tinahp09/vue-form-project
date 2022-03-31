@@ -2,11 +2,11 @@
   <div id="main">
     <div class="signup">
       <form method="post" v-on:submit.prevent="submit">
-        <label for="" aria-hidden="true" id="label">Welcome</label>
+        <label for="" aria-hidden="true" id="label">فرم ثبت نام</label>
         <input
           type="text"
           name="text"
-          placeholder="Enter Your Firstname.."
+          placeholder="نام خود را وارد کنید.."
           v-model="firstname"
           required
           id="firstname-input"
@@ -14,7 +14,7 @@
         <input
           type="text"
           name="text"
-          placeholder="Enter Your Lastname.."
+          placeholder="نام خانوادگی خود را وارد کنید.."
           v-model="lastname"
           required
           id="lastname-input"
@@ -22,7 +22,7 @@
         <input
           type="text"
           name="age"
-          placeholder="Enter Your Age.."
+          placeholder="سن خود را وارد کنید.."
           v-model="age"
           required
           id="age-input"
@@ -30,17 +30,26 @@
         <input
           type="text"
           name="text"
-          placeholder="Enter Your National code.."
+          placeholder="کد ملی خود را وارد کنید.."
           v-model="nationalCode"
           required
           id="code-input"
         />
+        <b-form-checkbox
+          id="checkbox-1"
+          name="checkbox-1"
+          value="accepted"
+          unchecked-value="نیستم"
+          class="px-5"
+        >
+          سرپرست خانواده هستم
+        </b-form-checkbox>
         <button
           class="btn d-block mx-auto px-5"
           id="signup-btn"
           @click.prevent="submit()"
         >
-          sign up
+          ثبت نام
         </button>
         <br />
         <b-alert show dismissible variant="danger" v-if="errors.length > 0">
@@ -59,6 +68,11 @@ export default {
       lastname: "",
       nationalCode: "",
       age: "",
+      options: [
+        { value: null, text: "Please select an option" },
+        { value: "a", text: "مرد" },
+        { value: "b", text: "زن" },
+      ],
     };
   },
   methods: {
@@ -93,6 +107,10 @@ export default {
 };
 </script>
 <style scoped>
+#checkbox-1 {
+  vertical-align: middle;
+  float: right;
+}
 .error {
   border: 2px solid red;
 }
@@ -139,10 +157,13 @@ input {
   padding: 20px 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 10px 14px 12px;
 }
+#checkbox-1 {
+  padding: 20px 8px;
+}
 #signup-btn {
   background-color: #004085;
   color: white;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 18px;
   margin-top: 50px;
 }
@@ -150,9 +171,10 @@ input {
   color: #004085;
   background-color: white;
   transition: 0.9s;
-  font-weight: 600;
+  font-weight: 400;
 }
 ::placeholder {
-  font-size: 14px;
+  font-size: 17px;
+  text-align: right;
 }
 </style>
