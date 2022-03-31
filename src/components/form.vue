@@ -6,7 +6,7 @@
         <input
           type="text"
           name="text"
-          placeholder="نام خود را وارد کنید.."
+          placeholder="نام خود را وارد کنید"
           v-model="firstname"
           required
           id="firstname-input"
@@ -14,7 +14,7 @@
         <input
           type="text"
           name="text"
-          placeholder="نام خانوادگی خود را وارد کنید.."
+          placeholder="نام خانوادگی خود را وارد کنید"
           v-model="lastname"
           required
           id="lastname-input"
@@ -22,18 +22,46 @@
         <input
           type="text"
           name="age"
-          placeholder="سن خود را وارد کنید.."
+          placeholder="سن خود را وارد کنید"
           v-model="age"
           required
           id="age-input"
         />
+
         <input
           type="text"
           name="text"
-          placeholder="کد ملی خود را وارد کنید.."
+          placeholder="کد ملی خود را وارد کنید"
           v-model="nationalCode"
           required
           id="code-input"
+        />
+        <input
+          type="text"
+          name="text"
+          placeholder="شغل خود را وارد کنید"
+          v-model="job"
+          required
+          id="job-input"
+          v-if="show"
+        />
+        <input
+          type="text"
+          name="text"
+          placeholder="مدرک تحصیلی خود را وارد کنید"
+          v-model="educationDegree"
+          required
+          id="deg-input"
+          v-if="show"
+        />
+        <input
+          type="text"
+          name="text"
+          placeholder="نام مدرسه خود را وارد کنید"
+          v-model="schoolName"
+          required
+          id="deg-input"
+          v-if="showSchool"
         />
         <b-form-checkbox
           id="checkbox-1"
@@ -67,7 +95,12 @@ export default {
       firstname: "",
       lastname: "",
       nationalCode: "",
+      job: "",
       age: "",
+      educationDegree: "",
+      schoolName: "",
+      show: false,
+      showSchool: false,
       options: [
         { value: null, text: "Please select an option" },
         { value: "a", text: "مرد" },
@@ -77,30 +110,41 @@ export default {
   },
   methods: {
     submit() {
+      let firstnameInput = document.getElementById("firstname-input");
+      let lastnameInput = document.getElementById("lastname-input");
+      let ageInput = document.getElementById("age-input");
+      let codeInput = document.getElementById("code-input");
+      // let jobInput = document.getElementById("job-input");
       this.errors = [];
       if (!this.firstname) {
         this.errors.push("First name required!!");
-        document.getElementById("firstname-input").classList.add("error");
+        firstnameInput.classList.add("error");
       } else {
-        document.getElementById("firstname-input").classList.remove("error");
+        firstnameInput.classList.remove("error");
       }
       if (!this.lastname) {
         this.errors.push("Last name required!!");
-        document.getElementById("lastname-input").classList.add("error");
+        lastnameInput.classList.add("error");
       } else {
-        document.getElementById("lastname-input").classList.remove("error");
+        lastnameInput.classList.remove("error");
       }
       if (!this.age) {
         this.errors.push("Age required!!");
-        document.getElementById("age-input").classList.add("error");
+        ageInput.classList.add("error");
       } else {
-        document.getElementById("age-input").classList.remove("error");
+        ageInput.classList.remove("error");
+      }
+      if (ageInput.value >= 18) {
+        console.log("you are old enough");
+        this.show = true;
+      } else if (ageInput.value < 18 && ageInput.value > 7) {
+        this.showSchool = true;
       }
       if (!this.nationalCode) {
         this.errors.push("National code required!!");
-        document.getElementById("code-input").classList.add("error");
+        codeInput.classList.add("error");
       } else {
-        document.getElementById("code-input").classList.remove("error");
+        codeInput.classList.remove("error");
       }
     },
   },
@@ -123,7 +167,7 @@ export default {
     );
   background-blend-mode: screen;
   width: 350px;
-  height: 550px;
+  height: 80%;
   border-radius: 15px;
   box-shadow: 5px 20px 50px #000;
 }
@@ -145,6 +189,7 @@ export default {
   transition: 0.5s ease-in-out;
 }
 input {
+  text-align: right;
   width: 85%;
   height: 20px;
   background: #fff;
