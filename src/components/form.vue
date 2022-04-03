@@ -60,7 +60,7 @@
           placeholder="نام مدرسه خود را وارد کنید"
           v-model="schoolName"
           required
-          id="deg-input"
+          id="school-input"
           v-if="showSchool"
         />
         <b-form-checkbox
@@ -114,7 +114,10 @@ export default {
       let lastnameInput = document.getElementById("lastname-input");
       let ageInput = document.getElementById("age-input");
       let codeInput = document.getElementById("code-input");
-      // let jobInput = document.getElementById("job-input");
+      let schoolName = document.getElementById("school-input");
+      let jobInput = document.getElementById("job-input");
+      let degInput = document.getElementById("deg-input");
+
       this.errors = [];
       if (!this.firstname) {
         this.errors.push("First name required!!");
@@ -137,8 +140,17 @@ export default {
       if (ageInput.value >= 18) {
         console.log("you are old enough");
         this.show = true;
+        if (!jobInput || !degInput) {
+          this.errors.push("Job or education degree is required");
+        }
       } else if (ageInput.value < 18 && ageInput.value > 7) {
         this.showSchool = true;
+        if (!schoolName) {
+          this.errors.push("School name is required");
+          // schoolName.classList.add("error");
+        } else {
+          schoolName.classList.remove("error");
+        }
       }
       if (!this.nationalCode) {
         this.errors.push("National code required!!");

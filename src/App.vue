@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <Form />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Form from "./components/form.vue";
+// import Form from "./components/form.vue";
 
 export default {
   name: "App",
-  components: {
-    Form,
-  },
+  // components: {
+  //   Form,
+  // },
 };
 </script>
 
