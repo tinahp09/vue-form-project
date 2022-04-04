@@ -12,10 +12,18 @@
             id="firstname-input"
             class="form-control"
           />
-          <p v-if="!$v.firstname.required" class="text-right" id="span-text">
+          <p
+            v-if="!$v.firstname.required && $v.firstname.$dirty"
+            class="text-right"
+            id="span-text"
+          >
             لطفا نام خود را وارد کنید
           </p>
-          <p v-if="!$v.firstname.alpha" class="text-right" id="span-text">
+          <p
+            v-if="!$v.firstname.alpha && $v.firstname.$dirty"
+            class="text-right"
+            id="span-text"
+          >
             لطفا نام خود را وارد کنید
           </p>
         </div>
@@ -28,10 +36,18 @@
             id="lastname-input"
             class="form-group"
           />
-          <p v-if="!$v.lastname.required" class="text-right" id="span-text">
+          <p
+            v-if="!$v.lastname.required && $v.lastname.$dirty"
+            class="text-right"
+            id="span-text"
+          >
             لطفا نام خانوادگی خود را وارد کنید
           </p>
-          <p v-if="!$v.lastname.alpha" class="text-right" id="span-text">
+          <p
+            v-if="!$v.lastname.alpha && $v.lastname.$dirty"
+            class="text-right"
+            id="span-text"
+          >
             لطفا نام خانوادگی خود را وارد کنید
           </p>
         </div>
@@ -44,7 +60,11 @@
             v-model="age"
             id="age-input"
           />
-          <p v-if="!$v.age.required" class="text-right" id="span-text">
+          <p
+            v-if="!$v.age.required && $v.age.$dirty"
+            class="text-right"
+            id="span-text"
+          >
             لطفا سن خود را وارد کنید
           </p>
         </div>
@@ -57,7 +77,11 @@
             v-model="nationalCode"
             id="code-input"
           />
-          <p v-if="!$v.nationalCode.required" class="text-right" id="span-text">
+          <p
+            v-if="!$v.nationalCode.required && $v.nationalCode.$dirty"
+            class="text-right"
+            id="span-text"
+          >
             لطفا کد ملی خود را وارد کنید
           </p>
         </div>
@@ -71,7 +95,14 @@
           id="job-input"
           v-if="isMoreThan18"
         />
-        
+        <p
+          v-if="(!$v.job.required && $v.job.$dirty) && isMoreThan18"
+          class="text-right"
+          id="span-text"
+        >
+          لطفا شغل خود را وارد کنید
+        </p>
+
         <input
           type="text"
           name="text"
@@ -81,6 +112,13 @@
           id="deg-input"
           v-if="isMoreThan18"
         />
+        <p
+          v-if="(!$v.educationDegree.required && $v.educationDegree.$dirty) && isMoreThan18"
+          class="text-right"
+          id="span-text"
+        >
+          لطفا مدرک تحصیلی خود را وارد کنید
+        </p>
         <input
           type="text"
           name="text"
@@ -90,6 +128,13 @@
           id="school-input"
           v-if="isBetween7and18"
         />
+        <p
+          v-if="(!$v.schoolName.required && $v.schoolName.$dirty) && isBetween7and18"
+          class="text-right"
+          id="span-text"
+        >
+          لطفا نام مدرسه خود را وارد کنید
+        </p>
         <b-form-checkbox
           id="checkbox-1"
           name="checkbox-1"
@@ -161,7 +206,7 @@ export default {
     schoolName: {
       required,
       alpha,
-    }
+    },
   },
   computed: {
     isMoreThan18() {
