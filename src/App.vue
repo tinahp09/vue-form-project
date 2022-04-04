@@ -23,7 +23,6 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  font-family: "Jost", sans-serif;
   background: linear-gradient(to bottom, #3e3780, #4d4885, #24243e);
 }
 </style>

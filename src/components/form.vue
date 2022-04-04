@@ -3,38 +3,65 @@
     <div class="signup">
       <form method="post" v-on:submit.prevent="submit">
         <label for="" aria-hidden="true" id="label">فرم ثبت نام</label>
-        <input
-          type="text"
-          name="text"
-          placeholder="نام خود را وارد کنید"
-          v-model.trim="$v.firstname.$model"
-          id="firstname-input"
-        />
-        <input
-          type="text"
-          name="text"
-          placeholder="نام خانوادگی خود را وارد کنید"
-          v-model="lastname"
-          required
-          id="lastname-input"
-        />
-        <input
-          type="text"
-          name="age"
-          placeholder="سن خود را وارد کنید"
-          v-model="age"
-          required
-          id="age-input"
-        />
+        <div class="form-group">
+          <input
+            type="text"
+            name="text"
+            placeholder="نام خود را وارد کنید"
+            v-model.trim="$v.firstname.$model"
+            id="firstname-input"
+            class="form-control"
+          />
+          <p v-if="!$v.firstname.required" class="text-right" id="span-text">
+            لطفا نام خود را وارد کنید
+          </p>
+          <p v-if="!$v.firstname.alpha" class="text-right" id="span-text">
+            لطفا نام خود را وارد کنید
+          </p>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="text"
+            placeholder="نام خانوادگی خود را وارد کنید"
+            v-model="lastname"
+            id="lastname-input"
+            class="form-group"
+          />
+          <p v-if="!$v.lastname.required" class="text-right" id="span-text">
+            لطفا نام خانوادگی خود را وارد کنید
+          </p>
+          <p v-if="!$v.lastname.alpha" class="text-right" id="span-text">
+            لطفا نام خانوادگی خود را وارد کنید
+          </p>
+        </div>
 
-        <input
-          type="text"
-          name="text"
-          placeholder="کد ملی خود را وارد کنید"
-          v-model="nationalCode"
-          required
-          id="code-input"
-        />
+        <div class="form-group">
+          <input
+            type="text"
+            name="age"
+            placeholder="سن خود را وارد کنید"
+            v-model="age"
+            id="age-input"
+          />
+          <p v-if="!$v.age.required" class="text-right" id="span-text">
+            لطفا سن خود را وارد کنید
+          </p>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            name="text"
+            placeholder="کد ملی خود را وارد کنید"
+            v-model="nationalCode"
+            id="code-input"
+          />
+          <p v-if="!$v.nationalCode.required" class="text-right" id="span-text">
+            لطفا کد ملی خود را وارد کنید
+          </p>
+        </div>
+
         <input
           type="text"
           name="text"
@@ -44,6 +71,7 @@
           id="job-input"
           v-if="isMoreThan18"
         />
+        
         <input
           type="text"
           name="text"
@@ -75,20 +103,21 @@
         <button
           class="btn d-block mx-auto px-5"
           id="signup-btn"
-          @click.prevent="submit()"
+          @click="submit()"
+          type="submit"
         >
           ثبت نام
         </button>
         <br />
-        <b-alert show dismissible variant="danger" v-if="errors.length > 0">
+        <!-- <b-alert show dismissible variant="danger" v-if="errors.length > 0">
           <span v-for="error in errors" :key="error"> {{ error }} <br /> </span>
-        </b-alert>
+        </b-alert> -->
       </form>
     </div>
   </div>
 </template>
 <script>
-import { required } from "vuelidate/lib/validators";
+import { required, alpha } from "vuelidate/lib/validators";
 export default {
   data() {
     return {
@@ -102,17 +131,37 @@ export default {
       schoolName: "",
       show: false,
       showSchool: false,
-      options: [
-        { value: null, text: "Please select an option" },
-        { value: "a", text: "مرد" },
-        { value: "b", text: "زن" },
-      ],
     };
   },
   validations: {
     firstname: {
       required,
+      alpha,
     },
+    lastname: {
+      required,
+      alpha,
+    },
+    age: {
+      required,
+      alpha,
+    },
+    nationalCode: {
+      required,
+      alpha,
+    },
+    job: {
+      required,
+      alpha,
+    },
+    educationDegree: {
+      required,
+      alpha,
+    },
+    schoolName: {
+      required,
+      alpha,
+    }
   },
   computed: {
     isMoreThan18() {
@@ -139,7 +188,15 @@ export default {
   },
   methods: {
     submit() {
-      console.log("form submitted");
+      // console.log("form submitted");
+      // this.$router.push("/dashboard");
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        console.log(
+          `firstname: ${this.firstname}, lastname:${this.lastname}, age: ${this.age}`
+        );
+      }
     },
   },
 };
@@ -152,8 +209,15 @@ export default {
 .error {
   border: 2px solid red;
 }
+#span-text {
+  text-align: right !important;
+  font-size: 16px;
+  color: rgb(216, 41, 41);
+  padding-right: 25px;
+  font-weight: 500;
+}
 #main {
-  background: linear-gradient(-180deg, #7aaddd 0%, #386092 98%),
+  background: linear-gradient(-180deg, #82b4e2 0%, #3a6396 98%),
     radial-gradient(
       at top left,
       rgba(255, 255, 255, 0.3) 0%,
@@ -172,7 +236,6 @@ export default {
 }
 #label {
   color: #004085;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 2.3em;
   justify-content: center;
