@@ -7,8 +7,7 @@
           type="text"
           name="text"
           placeholder="نام خود را وارد کنید"
-          v-model="firstname"
-          required
+          v-model.trim="$v.firstname.$model"
           id="firstname-input"
         />
         <input
@@ -43,7 +42,7 @@
           v-model="job"
           required
           id="job-input"
-          v-if="show"
+          v-if="isMoreThan18"
         />
         <input
           type="text"
@@ -52,7 +51,7 @@
           v-model="educationDegree"
           required
           id="deg-input"
-          v-if="show"
+          v-if="isMoreThan18"
         />
         <input
           type="text"
@@ -61,7 +60,7 @@
           v-model="schoolName"
           required
           id="school-input"
-          v-if="showSchool"
+          v-if="isBetween7and18"
         />
         <b-form-checkbox
           id="checkbox-1"
@@ -69,6 +68,7 @@
           value="accepted"
           unchecked-value="نیستم"
           class="px-5"
+          v-if="isHeadOfHouse"
         >
           سرپرست خانواده هستم
         </b-form-checkbox>
@@ -88,6 +88,7 @@
   </div>
 </template>
 <script>
+import { required } from "vuelidate/lib/validators";
 export default {
   data() {
     return {
@@ -108,56 +109,37 @@ export default {
       ],
     };
   },
+  validations: {
+    firstname: {
+      required,
+    },
+  },
+  computed: {
+    isMoreThan18() {
+      if (this.age >= 18) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    isBetween7and18() {
+      if (this.age > 7 && this.age < 18) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    isHeadOfHouse() {
+      if (this.age > 18) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
   methods: {
     submit() {
-      let firstnameInput = document.getElementById("firstname-input");
-      let lastnameInput = document.getElementById("lastname-input");
-      let ageInput = document.getElementById("age-input");
-      let codeInput = document.getElementById("code-input");
-      let schoolName = document.getElementById("school-input");
-      let jobInput = document.getElementById("job-input");
-      let degInput = document.getElementById("deg-input");
-
-      this.errors = [];
-      if (!this.firstname) {
-        this.errors.push("First name required!!");
-        firstnameInput.classList.add("error");
-      } else {
-        firstnameInput.classList.remove("error");
-      }
-      if (!this.lastname) {
-        this.errors.push("Last name required!!");
-        lastnameInput.classList.add("error");
-      } else {
-        lastnameInput.classList.remove("error");
-      }
-      if (!this.age) {
-        this.errors.push("Age required!!");
-        ageInput.classList.add("error");
-      } else {
-        ageInput.classList.remove("error");
-      }
-      if (ageInput.value >= 18) {
-        console.log("you are old enough");
-        this.show = true;
-        if (!jobInput || !degInput) {
-          this.errors.push("Job or education degree is required");
-        }
-      } else if (ageInput.value < 18 && ageInput.value > 7) {
-        this.showSchool = true;
-        if (!schoolName) {
-          this.errors.push("School name is required");
-          // schoolName.classList.add("error");
-        } else {
-          schoolName.classList.remove("error");
-        }
-      }
-      if (!this.nationalCode) {
-        this.errors.push("National code required!!");
-        codeInput.classList.add("error");
-      } else {
-        codeInput.classList.remove("error");
-      }
+      console.log("form submitted");
     },
   },
 };
