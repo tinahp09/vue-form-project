@@ -19,13 +19,6 @@
           >
             لطفا نام خود را وارد کنید
           </p>
-          <p
-            v-if="!$v.firstname.alpha && $v.firstname.$dirty"
-            class="text-right"
-            id="span-text"
-          >
-            لطفا نام خود را وارد کنید
-          </p>
         </div>
         <div class="form-group">
           <input
@@ -38,13 +31,6 @@
           />
           <p
             v-if="!$v.lastname.required && $v.lastname.$dirty"
-            class="text-right"
-            id="span-text"
-          >
-            لطفا نام خانوادگی خود را وارد کنید
-          </p>
-          <p
-            v-if="!$v.lastname.alpha && $v.lastname.$dirty"
             class="text-right"
             id="span-text"
           >
@@ -96,7 +82,7 @@
           v-if="isMoreThan18"
         />
         <p
-          v-if="(!$v.job.required && $v.job.$dirty) && isMoreThan18"
+          v-if="!$v.job.required && $v.job.$dirty && isMoreThan18"
           class="text-right"
           id="span-text"
         >
@@ -113,7 +99,11 @@
           v-if="isMoreThan18"
         />
         <p
-          v-if="(!$v.educationDegree.required && $v.educationDegree.$dirty) && isMoreThan18"
+          v-if="
+            !$v.educationDegree.required &&
+            $v.educationDegree.$dirty &&
+            isMoreThan18
+          "
           class="text-right"
           id="span-text"
         >
@@ -129,7 +119,9 @@
           v-if="isBetween7and18"
         />
         <p
-          v-if="(!$v.schoolName.required && $v.schoolName.$dirty) && isBetween7and18"
+          v-if="
+            !$v.schoolName.required && $v.schoolName.$dirty && isBetween7and18
+          "
           class="text-right"
           id="span-text"
         >
@@ -233,7 +225,7 @@ export default {
   },
   methods: {
     submit() {
-      // console.log("form submitted");
+      console.log("form submitted");
       // this.$router.push("/dashboard");
       this.$v.$touch();
 
@@ -241,7 +233,11 @@ export default {
         console.log(
           `firstname: ${this.firstname}, lastname:${this.lastname}, age: ${this.age}`
         );
+        // this.$router.push("/form");
       }
+      //  else {
+      //   this.$router.push("/dashboard");
+      // }
     },
   },
 };
