@@ -1,0 +1,10 @@
+{
+  "people": [
+    {
+      "firsname": "Tina",
+      "lastname": "Hosseinpour",
+      "age": 21,
+      "Job" : "Developer"
+    }
+  ]
+}

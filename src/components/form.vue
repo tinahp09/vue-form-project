@@ -1,19 +1,19 @@
 <template>
   <div id="main">
     <div class="signup">
-      <form method="post" v-on:submit.prevent="submit">
+      <form method="post" v-on:submit.prevent>
         <label for="" aria-hidden="true" id="label">فرم ثبت نام</label>
         <div class="form-group">
           <input
             type="text"
             name="text"
             placeholder="نام خود را وارد کنید"
-            v-model.trim="$v.firstname.$model"
             id="firstname-input"
             class="form-control"
+            v-model="form.firstname"
           />
           <p
-            v-if="!$v.firstname.required && $v.firstname.$dirty"
+            v-if="!$v.form.firstname.required && $v.form.firstname.$dirty"
             class="text-right"
             id="span-text"
           >
@@ -25,12 +25,12 @@
             type="text"
             name="text"
             placeholder="نام خانوادگی خود را وارد کنید"
-            v-model="lastname"
+            v-model="form.lastname"
             id="lastname-input"
             class="form-group"
           />
           <p
-            v-if="!$v.lastname.required && $v.lastname.$dirty"
+            v-if="!$v.form.lastname.required && $v.form.lastname.$dirty"
             class="text-right"
             id="span-text"
           >
@@ -43,11 +43,11 @@
             type="text"
             name="age"
             placeholder="سن خود را وارد کنید"
-            v-model="age"
+            v-model="form.age"
             id="age-input"
           />
           <p
-            v-if="!$v.age.required && $v.age.$dirty"
+            v-if="!$v.form.age.required && $v.form.age.$dirty"
             class="text-right"
             id="span-text"
           >
@@ -60,11 +60,11 @@
             type="text"
             name="text"
             placeholder="کد ملی خود را وارد کنید"
-            v-model="nationalCode"
+            v-model="form.nationalCode"
             id="code-input"
           />
           <p
-            v-if="!$v.nationalCode.required && $v.nationalCode.$dirty"
+            v-if="!$v.form.nationalCode.required && $v.form.nationalCode.$dirty"
             class="text-right"
             id="span-text"
           >
@@ -76,13 +76,13 @@
           type="text"
           name="text"
           placeholder="شغل خود را وارد کنید"
-          v-model="job"
+          v-model="form.job"
           required
           id="job-input"
           v-if="isMoreThan18"
         />
         <p
-          v-if="!$v.job.required && $v.job.$dirty && isMoreThan18"
+          v-if="!$v.form.job.required && $v.form.job.$dirty && isMoreThan18"
           class="text-right"
           id="span-text"
         >
@@ -93,15 +93,15 @@
           type="text"
           name="text"
           placeholder="مدرک تحصیلی خود را وارد کنید"
-          v-model="educationDegree"
+          v-model="form.educationDegree"
           required
           id="deg-input"
           v-if="isMoreThan18"
         />
         <p
           v-if="
-            !$v.educationDegree.required &&
-            $v.educationDegree.$dirty &&
+            !$v.form.educationDegree.required &&
+            $v.form.educationDegree.$dirty &&
             isMoreThan18
           "
           class="text-right"
@@ -113,14 +113,16 @@
           type="text"
           name="text"
           placeholder="نام مدرسه خود را وارد کنید"
-          v-model="schoolName"
+          v-model="form.schoolName"
           required
           id="school-input"
           v-if="isBetween7and18"
         />
         <p
           v-if="
-            !$v.schoolName.required && $v.schoolName.$dirty && isBetween7and18
+            !$v.form.schoolName.required &&
+            $v.form.schoolName.$dirty &&
+            isBetween7and18
           "
           class="text-right"
           id="span-text"
@@ -158,65 +160,65 @@ import { required, alpha } from "vuelidate/lib/validators";
 export default {
   data() {
     return {
-      errors: [],
-      firstname: "",
-      lastname: "",
-      nationalCode: "",
-      job: "",
-      age: "",
-      educationDegree: "",
-      schoolName: "",
-      show: false,
-      showSchool: false,
+      form: {
+        firstname: "",
+        lastname: "",
+        nationalCode: "",
+        job: "",
+        age: "",
+        educationDegree: "",
+        schoolName: "",
+      },
     };
   },
   validations: {
-    firstname: {
-      required,
-      alpha,
-    },
-    lastname: {
-      required,
-      alpha,
-    },
-    age: {
-      required,
-      alpha,
-    },
-    nationalCode: {
-      required,
-      alpha,
-    },
-    job: {
-      required,
-      alpha,
-    },
-    educationDegree: {
-      required,
-      alpha,
-    },
-    schoolName: {
-      required,
-      alpha,
+    form: {
+      firstname: {
+        required,
+      },
+      lastname: {
+        required,
+        alpha,
+      },
+      age: {
+        required,
+        alpha,
+      },
+      nationalCode: {
+        required,
+        alpha,
+      },
+      job: {
+        required,
+        alpha,
+      },
+      educationDegree: {
+        required,
+        alpha,
+      },
+      schoolName: {
+        required,
+        alpha,
+      },
     },
   },
   computed: {
     isMoreThan18() {
-      if (this.age >= 18) {
+      if (this.form.age >= 18) {
         return true;
       } else {
         return false;
       }
     },
     isBetween7and18() {
-      if (this.age > 7 && this.age < 18) {
+      if (this.form.age > 7 && this.form.age < 18) {
         return true;
       } else {
         return false;
       }
     },
     isHeadOfHouse() {
-      if (this.age > 18) {
+      if (this.form.age > 18) {
         return true;
       } else {
         return false;
@@ -226,18 +228,12 @@ export default {
   methods: {
     submit() {
       console.log("form submitted");
-      // this.$router.push("/dashboard");
+
       this.$v.$touch();
 
       if (!this.$v.$invalid) {
-        console.log(
-          `firstname: ${this.firstname}, lastname:${this.lastname}, age: ${this.age}`
-        );
-        // this.$router.push("/form");
+        console.log(this.form);
       }
-      //  else {
-      //   this.$router.push("/dashboard");
-      // }
     },
   },
 };
