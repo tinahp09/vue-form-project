@@ -226,10 +226,11 @@ export default {
     },
   },
   methods: {
-    submit() {
+    async submit() {
       console.log("form submitted");
 
       this.$v.$touch();
+      await this.$store.commit("addPeople");
 
       if (!this.$v.$invalid) {
         console.log(this.form);
