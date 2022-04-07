@@ -7,6 +7,9 @@ import { Routes } from './Router.js'
 import { store } from './store/Store.js'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -20,6 +23,7 @@ Vue.use(IconsPlugin)
 Vue.use(Vuelidate)
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios)
+Vue.use(VueSweetalert2);
 
 
 const router = new VueRouter({

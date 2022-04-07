@@ -16,14 +16,6 @@ export default {
 </script>
 
 <style>
-#app {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #3e3780, #4d4885, #24243e);
-}
+
 </style>
 

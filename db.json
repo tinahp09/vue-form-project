@@ -1,10 +1,14 @@
 {
   "people": [
     {
-      "firsname": "Tina",
-      "lastname": "Hosseinpour",
-      "age": 21,
-      "Job" : "Developer"
+      "firstname": "tina",
+      "lastname": "hosseinpour",
+      "nationalCode": "11111",
+      "job": "",
+      "age": "3",
+      "educationDegree": "",
+      "schoolName": "",
+      "id": 1
     }
   ]
 }
