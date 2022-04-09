@@ -1,27 +1,9 @@
 <template>
   <div>
-    <Navbar />
     <div id="main">
       <div class="signup mt-5">
-        <b-form method="post" v-on:submit.prevent>
-          <b-row>
-            <b-col>
-              <input
-                type="text"
-                name="text"
-                placeholder="نام خانوادگی خود را وارد کنید"
-                v-model="form.lastname"
-                id="lastname-input"
-                class="form-group"
-              />
-              <p
-                v-if="!$v.form.lastname.required && $v.form.lastname.$dirty"
-                class="text-right"
-                id="span-text"
-              >
-                لطفا نام خانوادگی خود را وارد کنید
-              </p>
-            </b-col>
+        <b-form method="post" v-on:submit.prevent class="rtl" id="border">
+          <b-row class="mt-5">
             <b-col>
               <input
                 type="text"
@@ -38,6 +20,23 @@
                 id="span-text"
               >
                 لطفا نام خود را وارد کنید
+              </p>
+            </b-col>
+            <b-col>
+              <input
+                type="text"
+                name="text"
+                placeholder="نام خانوادگی خود را وارد کنید"
+                v-model="form.lastname"
+                id="lastname-input"
+                class="form-group"
+              />
+              <p
+                v-if="!$v.form.lastname.required && $v.form.lastname.$dirty"
+                class="text-right"
+                id="span-text"
+              >
+                لطفا نام خانوادگی خود را وارد کنید
               </p>
             </b-col>
           </b-row>
@@ -160,7 +159,7 @@
           </b-form-checkbox>
           <b-row>
             <button
-              class="btn btn-info mx-auto px-5"
+              class="btn btn-info mx-auto px-3 my-2"
               id="signup-btn"
               @click="submit()"
               type="submit"
@@ -179,24 +178,13 @@
 </template>
 <script>
 import { required, requiredIf } from "vuelidate/lib/validators";
-import Navbar from "../components/navbar.vue";
 export default {
-  components: {
-    Navbar,
+  props: {
+    formInfo: {
+      type: Object,
+    },
   },
-  data() {
-    return {
-      form: {
-        firstname: "",
-        lastname: "",
-        nationalCode: "",
-        job: "",
-        age: "",
-        educationDegree: "",
-        schoolName: "",
-      },
-    };
-  },
+
   validations: {
     form: {
       firstname: {
@@ -229,6 +217,9 @@ export default {
     },
   },
   computed: {
+    form() {
+      return this.formInfo;
+    },
     isMoreThan18() {
       if (this.form.age >= 18) {
         return true;
@@ -257,6 +248,7 @@ export default {
       if (!this.$v.$invalid) {
         await this.$store.dispatch("addPeople", this.form).then((res) => {
           if (res.status == 201) {
+            this.$emit('addPeople', res.data)
             this.$swal("Successful insert");
             this.form.firstname = "";
             this.form.lastname = "";
@@ -269,10 +261,21 @@ export default {
         });
       }
     },
+    addForm() {},
   },
 };
 </script>
 <style scoped>
+.rtl {
+  direction: rtl;
+}
+#border {
+  border: 1px solid #000;
+  margin-top: 20px;
+  padding: 0 20px;
+  border-radius: 10px;
+  background-color: aliceblue;
+}
 #checkbox-1 {
   vertical-align: middle;
   float: right;

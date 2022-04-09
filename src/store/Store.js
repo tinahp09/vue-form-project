@@ -9,6 +9,9 @@ export const store = new Vuex.Store({
         addPeople(context, data) {
             return axios.post('http://localhost:3000/people', data)
 
+        },
+        getPeople() {
+            return axios.get('http://localhost:3000/people')
         }
     }
 })
