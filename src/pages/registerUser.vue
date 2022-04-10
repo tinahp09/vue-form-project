@@ -45,16 +45,19 @@ export default {
       }
     },
   },
-  methods: {
-    addForm() {
-      this.people.pop();
-      this.people.push(this.form);
-    },
-  },
   created() {
     this.$store.dispatch("getPeople").then((res) => {
       this.people = res.data;
     });
+  },
+  methods: {
+    addForm() {
+      this.people.push(this.form);
+    },
+    addPeople(e) {
+      this.people.pop();
+      this.people.push(e);
+    },
   },
 };
 </script>

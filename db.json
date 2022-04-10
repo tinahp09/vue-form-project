@@ -3,42 +3,12 @@
     {
       "firstname": "tina",
       "lastname": "hosseinpour",
-      "nationalCode": "11111",
-      "job": "",
-      "age": "3",
-      "educationDegree": "",
-      "schoolName": "",
-      "id": 1
-    },
-    {
-      "firstname": "tina",
-      "lastname": "hosseinpour",
       "nationalCode": "1362791970",
       "job": "developer",
       "age": "21",
       "educationDegree": "master",
       "schoolName": "",
-      "id": 2
-    },
-    {
-      "firstname": "anita",
-      "lastname": "hosseinpour",
-      "nationalCode": "11111",
-      "job": "",
-      "age": "2",
-      "educationDegree": "",
-      "schoolName": "",
-      "id": 3
-    },
-    {
-      "firstname": "ashraf",
-      "lastname": "elmi",
-      "nationalCode": "11111",
-      "job": "",
-      "age": "3",
-      "educationDegree": "",
-      "schoolName": "",
-      "id": 4
+      "id": 1
     }
   ]
 }

@@ -159,6 +159,7 @@
           </b-form-checkbox>
           <b-row>
             <button
+              v-if="!form.id"
               class="btn btn-info mx-auto px-3 my-2"
               id="signup-btn"
               @click="submit()"
@@ -166,6 +167,18 @@
             >
               ثبت نام
             </button>
+            <div v-else>
+              <button
+                class="btn btn-info mx-2 px-3 my-2"
+                id="signup-btn"
+                @click="editBtn"
+              >
+                ویرایش
+              </button>
+              <button class="btn btn-info mx-2 px-4 my-2" id="signup-btn">
+                حذف
+              </button>
+            </div>
           </b-row>
           <br />
           <!-- <b-alert show dismissible variant="danger" v-if="errors.length > 0">
@@ -184,7 +197,9 @@ export default {
       type: Object,
     },
   },
-
+  data() {
+    return {};
+  },
   validations: {
     form: {
       firstname: {
@@ -248,7 +263,7 @@ export default {
       if (!this.$v.$invalid) {
         await this.$store.dispatch("addPeople", this.form).then((res) => {
           if (res.status == 201) {
-            this.$emit('addPeople', res.data)
+            this.$emit("addPeople", res.data);
             this.$swal("Successful insert");
             this.form.firstname = "";
             this.form.lastname = "";
@@ -261,7 +276,9 @@ export default {
         });
       }
     },
-    addForm() {},
+    editBtn() {
+      // const editInput = document.getElementsByTagName("input");
+    },
   },
 };
 </script>
