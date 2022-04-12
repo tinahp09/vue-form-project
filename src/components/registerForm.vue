@@ -12,6 +12,7 @@
                 id="firstname-input"
                 class="form-control"
                 v-model="form.firstname"
+                :disabled="disableInput"
               />
               <br />
               <p
@@ -30,6 +31,7 @@
                 v-model="form.lastname"
                 id="lastname-input"
                 class="form-group"
+                :disabled="disableInput"
               />
               <p
                 v-if="!$v.form.lastname.required && $v.form.lastname.$dirty"
@@ -170,13 +172,29 @@
             <div v-else>
               <button
                 class="btn btn-info mx-2 px-3 my-2"
-                id="signup-btn"
                 @click="editBtn"
+                v-if="this.editButton === 'ویرایش'"
               >
-                ویرایش
+                {{ editButton }}
               </button>
-              <button class="btn btn-info mx-2 px-4 my-2" id="signup-btn">
-                حذف
+              <button
+                class="btn btn-success mx-2 px-3 my-2"
+                v-if="this.editButton === 'ذخیره'"
+                @click="saveInfo"
+              >
+                {{ editButton }}
+              </button>
+              <button
+                class="btn btn-info mx-2 px-4 my-2"
+                v-if="this.deleteButton === 'حذف'"
+              >
+                {{ deleteButton }}
+              </button>
+              <button
+                class="btn btn-danger mx-2 px-4 my-2"
+                v-if="this.deleteButton === 'کنسل'"
+              >
+                {{ deleteButton }}
               </button>
             </div>
           </b-row>
@@ -198,7 +216,10 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      editButton: "ویرایش",
+      deleteButton: "حذف",
+    };
   },
   validations: {
     form: {
@@ -232,6 +253,13 @@ export default {
     },
   },
   computed: {
+    disableInput() {
+      if (this.editButton === "ذخیره") {
+        return false;
+      } else {
+        return true;
+      }
+    },
     form() {
       return this.formInfo;
     },
@@ -277,8 +305,10 @@ export default {
       }
     },
     editBtn() {
-      // const editInput = document.getElementsByTagName("input");
+      this.editButton = "ذخیره";
+      this.deleteButton = "کنسل";
     },
+    saveInfo() {},
   },
 };
 </script>
@@ -307,13 +337,7 @@ export default {
   padding-right: 25px;
   font-weight: 500;
 }
-#main {
-  background-blend-mode: screen;
-  width: 80%;
-  height: 60%;
-  display: block;
-  margin: auto;
-}
+
 .signup {
   position: relative;
   width: 100%;

@@ -1,16 +1,16 @@
 <template>
   <div>
     <Navbar />
-    <RegisterForm v-if="isEmptyPeople" />
-    <RegisterForm
-      v-for="item in people"
-      :key="item.id"
-      :formInfo="item"
-      @addPeople="addPeople"
-    />
-    <button class="btn btn-info mx-4 px-3 my-4" @click="addForm">
-      اضافه کردن
-    </button>
+    <div class="container">
+      <RegisterForm v-if="isEmptyPeople" :formInfo="form" />
+      <RegisterForm
+        v-for="item in people"
+        :key="item.id"
+        :formInfo="item"
+        @addPeople="addPeople"
+      />
+      <button class="btn btn-info mt-3 px-3" @click="addForm">اضافه کردن</button>
+    </div>
   </div>
 </template>
 
