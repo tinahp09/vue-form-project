@@ -10,7 +10,7 @@
                 name="text"
                 placeholder="نام خود را وارد کنید"
                 id="firstname-input"
-                class="form-control"
+                class="form-control mb-3"
                 v-model="form.firstname"
                 :disabled="disableInput"
               />
@@ -30,7 +30,7 @@
                 placeholder="نام خانوادگی خود را وارد کنید"
                 v-model="form.lastname"
                 id="lastname-input"
-                class="form-group"
+                class="form-control mb-3"
                 :disabled="disableInput"
               />
               <p
@@ -51,6 +51,8 @@
                 placeholder="سن خود را وارد کنید"
                 v-model="form.age"
                 id="age-input"
+                class="form-control"
+                :disabled="disableInput"
               />
               <p
                 v-if="!$v.form.age.required && $v.form.age.$dirty"
@@ -67,7 +69,8 @@
                 placeholder="کد ملی خود را وارد کنید"
                 v-model="form.nationalCode"
                 id="code-input"
-                class="mr-0"
+                class="form-control"
+                :disabled="disableInput"
               />
               <p
                 v-if="
@@ -90,6 +93,8 @@
                 v-model="form.job"
                 id="job-input"
                 v-if="isMoreThan18"
+                class="form-control"
+                :disabled="disableInput"
               />
               <p
                 v-if="
@@ -109,6 +114,8 @@
                 v-model="form.educationDegree"
                 id="deg-input"
                 v-if="isMoreThan18"
+                class="form-control"
+                :disabled="disableInput"
               />
               <p
                 v-if="
@@ -134,6 +141,8 @@
                 required
                 id="school-input"
                 v-if="isBetween7and18"
+                class="form-control"
+                :disabled="disableInput"
               />
               <p
                 v-if="
@@ -167,13 +176,14 @@
               @click="submit()"
               type="submit"
             >
-              ثبت نام
+              {{ registerButton }}
             </button>
             <div v-else>
               <button
                 class="btn btn-info mx-2 px-3 my-2"
                 @click="editBtn"
                 v-if="this.editButton === 'ویرایش'"
+                id="editBtn"
               >
                 {{ editButton }}
               </button>
@@ -181,18 +191,22 @@
                 class="btn btn-success mx-2 px-3 my-2"
                 v-if="this.editButton === 'ذخیره'"
                 @click="saveInfo"
+                id="saveBtn"
               >
                 {{ editButton }}
               </button>
               <button
-                class="btn btn-info mx-2 px-4 my-2"
+                class="btn btn-danger mx-2 px-4 my-2"
                 v-if="this.deleteButton === 'حذف'"
+                @click="deleteBtn"
+                id="deleteBtn"
               >
                 {{ deleteButton }}
               </button>
               <button
                 class="btn btn-danger mx-2 px-4 my-2"
                 v-if="this.deleteButton === 'کنسل'"
+                @click="cancelBtn"
               >
                 {{ deleteButton }}
               </button>
@@ -219,6 +233,8 @@ export default {
     return {
       editButton: "ویرایش",
       deleteButton: "حذف",
+      registerButton: "ثبت نام",
+      disabled: 0,
     };
   },
   validations: {
@@ -254,10 +270,10 @@ export default {
   },
   computed: {
     disableInput() {
-      if (this.editButton === "ذخیره") {
-        return false;
-      } else {
+      if (this.disabled === 1) {
         return true;
+      } else {
+        return false;
       }
     },
     form() {
@@ -300,6 +316,7 @@ export default {
             this.form.educationDegree = "";
             this.form.age = "";
             this.form.schoolName = "";
+            this.$v.reset;
           }
         });
       }
@@ -307,8 +324,36 @@ export default {
     editBtn() {
       this.editButton = "ذخیره";
       this.deleteButton = "کنسل";
+      this.disabled = 0;
     },
-    saveInfo() {},
+    saveInfo() {
+      this.$store.dispatch("updatePeople", this.form);
+      this.editButton = "ویرایش";
+      this.deleteButton = "حذف";
+      this.disabled = 1;
+    },
+    cancelBtn() {
+      this.editButton = "ویرایش";
+      this.deleteButton = "حذف";
+      this.disabled = 1;
+    },
+    deleteBtn() {
+      // let editBtn = document.getElementById("editBtn");
+      // let saveBtn = document.getElementById("deleteBtn");
+      // let signUpBtn = document.querySelector("#signup-btn");
+      // console.log(signUpBtn);
+      this.$store.dispatch("deletePeople", this.form);
+      // editBtn.style.display = "none";
+      // saveBtn.style.display = "none";
+      this.form.firstname = "";
+      this.form.lastname = "";
+      this.form.age = "";
+      this.form.nationalCode = "";
+      this.form.educationDegree = "";
+      this.form.age = "";
+      this.form.schoolName = "";
+      this.$v.reset;
+    },
   },
 };
 </script>

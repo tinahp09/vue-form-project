@@ -12,6 +12,12 @@ export const store = new Vuex.Store({
         },
         getPeople() {
             return axios.get('http://localhost:3000/people')
+        },
+        updatePeople(context, data) {
+            return axios.put('http://localhost:3000/people/1', data)
+        },
+        deletePeople(context, data) {
+            return axios.delete('http://localhost:3000/people/1', data)
         }
     }
 })

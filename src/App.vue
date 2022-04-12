@@ -1,21 +1,29 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <component :is="layoutName">
+      <router-view></router-view>
+    </component>
   </div>
 </template>
 
 <script>
 // import Form from "./components/form.vue";
+import defaultLayout from "./layout/defaultLayout.vue";
 
 export default {
   name: "App",
-  // components: {
-  //   Form,
-  // },
+  data() {
+    return {
+      layoutName: "defaultLayout",
+    };
+  },
+  components: {
+    defaultLayout,
+  },
+  created() {},
 };
 </script>
 
 <style>
-
 </style>
 

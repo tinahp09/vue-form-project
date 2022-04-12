@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Navbar />
     <div class="container">
       <RegisterForm v-if="isEmptyPeople" :formInfo="form" />
       <RegisterForm
@@ -9,18 +8,18 @@
         :formInfo="item"
         @addPeople="addPeople"
       />
-      <button class="btn btn-info mt-3 px-3" @click="addForm">اضافه کردن</button>
+      <button class="btn btn-info mt-3 px-3" @click="addForm">
+        اضافه کردن
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import Navbar from "../components/navbar.vue";
 import RegisterForm from "../components/registerForm.vue";
 export default {
   components: {
     RegisterForm,
-    Navbar,
   },
   data() {
     return {
@@ -45,14 +44,25 @@ export default {
       }
     },
   },
-  created() {
-    this.$store.dispatch("getPeople").then((res) => {
+  async created() {
+    await this.$store.dispatch("getPeople").then((res) => {
       this.people = res.data;
     });
+    if (this.people.length === 0) {
+      this.addForm();
+    }
   },
   methods: {
     addForm() {
-      this.people.push(this.form);
+      this.people.push({
+        firstname: "",
+        lastname: "",
+        nationalCode: "",
+        job: "",
+        age: "",
+        educationDegree: "",
+        schoolName: "",
+      });
     },
     addPeople(e) {
       this.people.pop();
