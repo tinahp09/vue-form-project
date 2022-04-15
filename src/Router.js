@@ -15,6 +15,7 @@ export const Routes = [
     {
         path: '/form',
         component: Form,
+        meta:{layour: 'registerLogin'}
     },
     {
         path: '/dashboard',

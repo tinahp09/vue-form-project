@@ -3,10 +3,12 @@
     <div class="container">
       <RegisterForm v-if="isEmptyPeople" :formInfo="form" />
       <RegisterForm
-        v-for="item in people"
+        v-for="(item, index) in people"
         :key="item.id"
         :formInfo="item"
         @addPeople="addPeople"
+        :index="index"
+        @deletePeople="deletePeople"
       />
       <button class="btn btn-info mt-3 px-3" @click="addForm">
         اضافه کردن
@@ -17,6 +19,8 @@
 
 <script>
 import RegisterForm from "../components/registerForm.vue";
+import "animate.css";
+import { form } from "@/constant/variable.js";
 export default {
   components: {
     RegisterForm,
@@ -24,15 +28,7 @@ export default {
   data() {
     return {
       people: [],
-      form: {
-        firstname: "",
-        lastname: "",
-        nationalCode: "",
-        job: "",
-        age: "",
-        educationDegree: "",
-        schoolName: "",
-      },
+      form: JSON.parse(form),
     };
   },
   computed: {
@@ -54,19 +50,14 @@ export default {
   },
   methods: {
     addForm() {
-      this.people.push({
-        firstname: "",
-        lastname: "",
-        nationalCode: "",
-        job: "",
-        age: "",
-        educationDegree: "",
-        schoolName: "",
-      });
+      this.people.push(JSON.parse(form));
     },
     addPeople(e) {
       this.people.pop();
       this.people.push(e);
+    },
+    deletePeople(index) {
+      this.people.splice(index, 1);
     },
   },
 };

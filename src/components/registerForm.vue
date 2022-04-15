@@ -1,232 +1,240 @@
 <template>
   <div>
-    <div id="main">
-      <div class="signup mt-5">
-        <b-form method="post" v-on:submit.prevent class="rtl" id="border">
-          <b-row class="mt-5">
-            <b-col>
-              <input
-                type="text"
-                name="text"
-                placeholder="نام خود را وارد کنید"
-                id="firstname-input"
-                class="form-control mb-3"
-                v-model="form.firstname"
-                :disabled="disableInput"
-              />
-              <br />
-              <p
-                v-if="!$v.form.firstname.required && $v.form.firstname.$dirty"
-                class="text-right"
-                id="span-text"
-              >
-                لطفا نام خود را وارد کنید
-              </p>
-            </b-col>
-            <b-col>
-              <input
-                type="text"
-                name="text"
-                placeholder="نام خانوادگی خود را وارد کنید"
-                v-model="form.lastname"
-                id="lastname-input"
-                class="form-control mb-3"
-                :disabled="disableInput"
-              />
-              <p
-                v-if="!$v.form.lastname.required && $v.form.lastname.$dirty"
-                class="text-right"
-                id="span-text"
-              >
-                لطفا نام خانوادگی خود را وارد کنید
-              </p>
-            </b-col>
-          </b-row>
+    <transition appear appear-active-class="animate__animated animate__fadeIn">
+      <div id="main">
+        <div class="signup mt-5">
+          <b-form method="post" v-on:submit.prevent class="rtl" id="border">
+            <b-row class="mt-5">
+              <b-col>
+                <input
+                  type="text"
+                  name="text"
+                  placeholder="نام خود را وارد کنید"
+                  id="firstname-input"
+                  class="form-control mb-3"
+                  v-model="form.firstname"
+                  :disabled="disableInput"
+                />
+                <br />
+                <p
+                  v-if="!$v.form.firstname.required && $v.form.firstname.$dirty"
+                  class="text-right"
+                  id="span-text"
+                >
+                  لطفا نام خود را وارد کنید
+                </p>
+              </b-col>
+              <b-col>
+                <input
+                  type="text"
+                  name="text"
+                  placeholder="نام خانوادگی خود را وارد کنید"
+                  v-model="form.lastname"
+                  id="lastname-input"
+                  class="form-control mb-3"
+                  :disabled="disableInput"
+                />
+                <p
+                  v-if="!$v.form.lastname.required && $v.form.lastname.$dirty"
+                  class="text-right"
+                  id="span-text"
+                >
+                  لطفا نام خانوادگی خود را وارد کنید
+                </p>
+              </b-col>
+            </b-row>
 
-          <b-row>
-            <b-col class="mb-3">
-              <input
-                type="text"
-                name="age"
-                placeholder="سن خود را وارد کنید"
-                v-model="form.age"
-                id="age-input"
-                class="form-control"
-                :disabled="disableInput"
-              />
-              <p
-                v-if="!$v.form.age.required && $v.form.age.$dirty"
-                class="text-right"
-                id="span-text"
-              >
-                لطفا سن خود را وارد کنید
-              </p>
-            </b-col>
-            <b-col class="mb-3">
-              <input
-                type="text"
-                name="text"
-                placeholder="کد ملی خود را وارد کنید"
-                v-model="form.nationalCode"
-                id="code-input"
-                class="form-control"
-                :disabled="disableInput"
-              />
-              <p
-                v-if="
-                  !$v.form.nationalCode.required && $v.form.nationalCode.$dirty
-                "
-                class="text-right"
-                id="span-text"
-              >
-                لطفا کد ملی خود را وارد کنید
-              </p>
-            </b-col>
-          </b-row>
+            <b-row>
+              <b-col class="mb-3">
+                <input
+                  type="text"
+                  name="age"
+                  placeholder="سن خود را وارد کنید"
+                  v-model="form.age"
+                  id="age-input"
+                  class="form-control"
+                  :disabled="disableInput"
+                />
+                <p
+                  v-if="!$v.form.age.required && $v.form.age.$dirty"
+                  class="text-right"
+                  id="span-text"
+                >
+                  لطفا سن خود را وارد کنید
+                </p>
+              </b-col>
+              <b-col class="mb-3">
+                <input
+                  type="text"
+                  name="text"
+                  placeholder="کد ملی خود را وارد کنید"
+                  v-model="form.nationalCode"
+                  id="code-input"
+                  class="form-control"
+                  :disabled="disableInput"
+                />
+                <p
+                  v-if="
+                    !$v.form.nationalCode.required &&
+                    $v.form.nationalCode.$dirty
+                  "
+                  class="text-right"
+                  id="span-text"
+                >
+                  لطفا کد ملی خود را وارد کنید
+                </p>
+              </b-col>
+            </b-row>
 
-          <b-row>
-            <b-col>
-              <input
-                type="text"
-                name="text"
-                placeholder="شغل خود را وارد کنید"
-                v-model="form.job"
-                id="job-input"
-                v-if="isMoreThan18"
-                class="form-control"
-                :disabled="disableInput"
-              />
-              <p
-                v-if="
-                  !$v.form.job.required && $v.form.job.$dirty && isMoreThan18
-                "
-                class="text-right"
-                id="span-text"
-              >
-                لطفا شغل خود را وارد کنید
-              </p>
-            </b-col>
-            <b-col>
-              <input
-                type="text"
-                name="text"
-                placeholder="مدرک تحصیلی خود را وارد کنید"
-                v-model="form.educationDegree"
-                id="deg-input"
-                v-if="isMoreThan18"
-                class="form-control"
-                :disabled="disableInput"
-              />
-              <p
-                v-if="
-                  !$v.form.educationDegree.required &&
-                  $v.form.educationDegree.$dirty &&
-                  isMoreThan18
-                "
-                class="text-right"
-                id="span-text"
-              >
-                لطفا مدرک تحصیلی خود را وارد کنید
-              </p>
-            </b-col>
-          </b-row>
+            <b-row>
+              <b-col>
+                <input
+                  type="text"
+                  name="text"
+                  placeholder="شغل خود را وارد کنید"
+                  v-model="form.job"
+                  id="job-input"
+                  v-if="isMoreThan18"
+                  class="form-control"
+                  :disabled="disableInput"
+                />
+                <p
+                  v-if="
+                    !$v.form.job.required && $v.form.job.$dirty && isMoreThan18
+                  "
+                  class="text-right"
+                  id="span-text"
+                >
+                  لطفا شغل خود را وارد کنید
+                </p>
+              </b-col>
+              <b-col>
+                <input
+                  type="text"
+                  name="text"
+                  placeholder="مدرک تحصیلی خود را وارد کنید"
+                  v-model="form.educationDegree"
+                  id="deg-input"
+                  v-if="isMoreThan18"
+                  class="form-control"
+                  :disabled="disableInput"
+                />
+                <p
+                  v-if="
+                    !$v.form.educationDegree.required &&
+                    $v.form.educationDegree.$dirty &&
+                    isMoreThan18
+                  "
+                  class="text-right"
+                  id="span-text"
+                >
+                  لطفا مدرک تحصیلی خود را وارد کنید
+                </p>
+              </b-col>
+            </b-row>
 
-          <b-row>
-            <b-col cols="6" class="ml-auto">
-              <input
-                type="text"
-                name="text"
-                placeholder="نام مدرسه خود را وارد کنید"
-                v-model="form.schoolName"
-                required
-                id="school-input"
-                v-if="isBetween7and18"
-                class="form-control"
-                :disabled="disableInput"
-              />
-              <p
-                v-if="
-                  !$v.form.schoolName.required &&
-                  $v.form.schoolName.$dirty &&
-                  isBetween7and18
-                "
-                class="text-right"
-                id="span-text"
-              >
-                لطفا نام مدرسه خود را وارد کنید
-              </p>
-            </b-col>
-          </b-row>
+            <b-row>
+              <b-col cols="6" class="ml-auto">
+                <input
+                  type="text"
+                  name="text"
+                  placeholder="نام مدرسه خود را وارد کنید"
+                  v-model="form.schoolName"
+                  required
+                  id="school-input"
+                  v-if="isBetween7and18"
+                  class="form-control"
+                  :disabled="disableInput"
+                />
+                <p
+                  v-if="
+                    !$v.form.schoolName.required &&
+                    $v.form.schoolName.$dirty &&
+                    isBetween7and18
+                  "
+                  class="text-right"
+                  id="span-text"
+                >
+                  لطفا نام مدرسه خود را وارد کنید
+                </p>
+              </b-col>
+            </b-row>
 
-          <b-form-checkbox
-            class="checkbox px-0 ml-4 mt-3"
-            id="checkbox-1"
-            name="checkbox-1"
-            value="accepted"
-            unchecked-value="نیستم"
-            v-if="isHeadOfHouse"
-          >
-            سرپرست خانواده هستم
-          </b-form-checkbox>
-          <b-row>
-            <button
-              v-if="!form.id"
-              class="btn btn-info mx-auto px-3 my-2"
-              id="signup-btn"
-              @click="submit()"
-              type="submit"
+            <b-form-checkbox
+              class="checkbox px-0 ml-4 mt-3"
+              id="checkbox-1"
+              name="checkbox-1"
+              value="accepted"
+              unchecked-value="نیستم"
+              v-if="isHeadOfHouse"
             >
-              {{ registerButton }}
-            </button>
-            <div v-else>
+              سرپرست خانواده هستم
+            </b-form-checkbox>
+            <b-row>
               <button
-                class="btn btn-info mx-2 px-3 my-2"
-                @click="editBtn"
-                v-if="this.editButton === 'ویرایش'"
-                id="editBtn"
+                v-if="!form.id"
+                class="btn btn-info mr-3 px-3 my-2"
+                id="signup-btn"
+                @click="submit()"
+                type="submit"
               >
-                {{ editButton }}
+                {{ registerButton }}
               </button>
-              <button
-                class="btn btn-success mx-2 px-3 my-2"
-                v-if="this.editButton === 'ذخیره'"
-                @click="saveInfo"
-                id="saveBtn"
-              >
-                {{ editButton }}
-              </button>
-              <button
-                class="btn btn-danger mx-2 px-4 my-2"
-                v-if="this.deleteButton === 'حذف'"
-                @click="deleteBtn"
-                id="deleteBtn"
-              >
-                {{ deleteButton }}
-              </button>
-              <button
-                class="btn btn-danger mx-2 px-4 my-2"
-                v-if="this.deleteButton === 'کنسل'"
-                @click="cancelBtn"
-              >
-                {{ deleteButton }}
-              </button>
-            </div>
-          </b-row>
-          <br />
-          <!-- <b-alert show dismissible variant="danger" v-if="errors.length > 0">
+              <div v-else>
+                <button
+                  class="btn btn-info mx-2 px-3 my-2"
+                  @click="editBtn"
+                  v-if="this.editButton === 'ویرایش'"
+                  id="editBtn"
+                >
+                  {{ editButton }}
+                </button>
+                <button
+                  class="btn btn-success mx-2 px-3 my-2"
+                  v-if="this.editButton === 'ذخیره'"
+                  @click="saveInfo"
+                  id="saveBtn"
+                >
+                  {{ editButton }}
+                </button>
+                <button
+                  class="btn btn-danger mx-2 px-4 my-2"
+                  v-if="this.deleteButton === 'حذف'"
+                  @click="deleteBtn"
+                  id="deleteBtn"
+                >
+                  {{ deleteButton }}
+                </button>
+                <button
+                  class="btn btn-danger mx-2 px-4 my-2"
+                  v-if="this.deleteButton === 'کنسل'"
+                  @click="cancelBtn"
+                >
+                  {{ deleteButton }}
+                </button>
+              </div>
+            </b-row>
+            <br />
+            <!-- <b-alert show dismissible variant="danger" v-if="errors.length > 0">
           <span v-for="error in errors" :key="error"> {{ error }} <br /> </span>
         </b-alert> -->
-        </b-form>
+          </b-form>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 <script>
 import { required, requiredIf } from "vuelidate/lib/validators";
+import "animate.css";
+import { form } from "@/constant/variable.js";
 export default {
   props: {
     formInfo: {
       type: Object,
+    },
+    index: {
+      type: Number,
     },
   },
   data() {
@@ -234,7 +242,7 @@ export default {
       editButton: "ویرایش",
       deleteButton: "حذف",
       registerButton: "ثبت نام",
-      disabled: 0,
+      inEditable: 1,
     };
   },
   validations: {
@@ -270,7 +278,7 @@ export default {
   },
   computed: {
     disableInput() {
-      if (this.disabled === 1) {
+      if (this.form.id && this.inEditable === 1) {
         return true;
       } else {
         return false;
@@ -309,13 +317,7 @@ export default {
           if (res.status == 201) {
             this.$emit("addPeople", res.data);
             this.$swal("Successful insert");
-            this.form.firstname = "";
-            this.form.lastname = "";
-            this.form.age = "";
-            this.form.nationalCode = "";
-            this.form.educationDegree = "";
-            this.form.age = "";
-            this.form.schoolName = "";
+            this.form = JSON.parse(form);
             this.$v.reset;
           }
         });
@@ -324,40 +326,51 @@ export default {
     editBtn() {
       this.editButton = "ذخیره";
       this.deleteButton = "کنسل";
-      this.disabled = 0;
+      this.inEditable = 0;
     },
     saveInfo() {
       this.$store.dispatch("updatePeople", this.form);
       this.editButton = "ویرایش";
       this.deleteButton = "حذف";
-      this.disabled = 1;
+      this.inEditable = 1;
     },
     cancelBtn() {
       this.editButton = "ویرایش";
       this.deleteButton = "حذف";
-      this.disabled = 1;
+      this.inEditable = 1;
     },
     deleteBtn() {
-      // let editBtn = document.getElementById("editBtn");
-      // let saveBtn = document.getElementById("deleteBtn");
-      // let signUpBtn = document.querySelector("#signup-btn");
-      // console.log(signUpBtn);
-      this.$store.dispatch("deletePeople", this.form);
-      // editBtn.style.display = "none";
-      // saveBtn.style.display = "none";
-      this.form.firstname = "";
-      this.form.lastname = "";
-      this.form.age = "";
-      this.form.nationalCode = "";
-      this.form.educationDegree = "";
-      this.form.age = "";
-      this.form.schoolName = "";
-      this.$v.reset;
+      this.$swal({
+        text: "آیا از حذف آیتم اطمینان دارید؟",
+        showCancelButton: true,
+        confirmButtonText: "بله",
+        cancelButtonText: "خیر",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+      }).then((res) => {
+        console.log(res);
+        if (res.isConfirmed) {
+          this.$store.dispatch("deletePeople", this.form).then((result) => {
+            console.log(result);
+            this.$emit("deletePeople", this.index);
+          });
+        }
+      });
     },
   },
 };
 </script>
 <style scoped>
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 .rtl {
   direction: rtl;
 }
@@ -382,7 +395,6 @@ export default {
   padding-right: 25px;
   font-weight: 500;
 }
-
 .signup {
   position: relative;
   width: 100%;
@@ -418,6 +430,8 @@ input {
   font-weight: 400;
   font-size: 18px;
   margin-top: 30px;
+  margin-left: auto;
+  display: block;
 }
 #signup-btn:hover {
   color: #138496;

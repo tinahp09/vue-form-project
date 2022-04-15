@@ -9,7 +9,7 @@
 <script>
 // import Form from "./components/form.vue";
 import defaultLayout from "./layout/defaultLayout.vue";
-
+import registerLogin from "./layout/registerLogin.vue";
 export default {
   name: "App",
   data() {
@@ -19,8 +19,15 @@ export default {
   },
   components: {
     defaultLayout,
+    registerLogin,
   },
-  created() {},
+  computed: {
+    layout() {
+      return this.$route.meta.layout
+        ? this.$route.meta.layout
+        : "defaultLayout";
+    },
+  },
 };
 </script>
 

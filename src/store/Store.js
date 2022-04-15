@@ -14,10 +14,11 @@ export const store = new Vuex.Store({
             return axios.get('http://localhost:3000/people')
         },
         updatePeople(context, data) {
-            return axios.put('http://localhost:3000/people/1', data)
+            console.log(data.id);
+            return axios.put(`http://localhost:3000/people/${data.id}`, data)
         },
         deletePeople(context, data) {
-            return axios.delete('http://localhost:3000/people/1', data)
+            return axios.delete(`http://localhost:3000/people/${data.id}`, data)
         }
     }
 })
