@@ -5,7 +5,7 @@ Vue.use(Vuei18n)
 
 export const i18n = new Vuei18n({
     locale: 'fa',
-    message: {
+    messages: {
         'fa': {
             save: 'ذخیره'
         }
