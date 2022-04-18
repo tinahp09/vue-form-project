@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Form from './pages/registerUser.vue'
 import Dashboard from './pages/dashboard.vue'
 import Home from './pages/Home.vue'
+import LoginUser from './pages/LoginUser.vue'
 
 Vue.use(Router)
 
@@ -15,10 +16,14 @@ export const Routes = [
     {
         path: '/form',
         component: Form,
-        meta:{layour: 'registerLogin'}
+        meta: { layour: 'registerLogin' }
     },
     {
         path: '/dashboard',
         component: Dashboard,
+    },
+    {
+        path: '/loginUser',
+        component: LoginUser
     }
 ]

@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 import { Routes } from './Router.js'
 import { store } from './store/Store.js'
 import axios from 'axios'
+import { i18n } from './plugins/i18n.js'
 import VueAxios from 'vue-axios'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
@@ -33,6 +34,7 @@ const router = new VueRouter({
 
 
 new Vue({
+  i18n,
   router,
   store,
   render: h => h(App),

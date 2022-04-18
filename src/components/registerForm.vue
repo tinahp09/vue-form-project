@@ -6,8 +6,7 @@
           <b-form method="post" v-on:submit.prevent class="rtl" id="border">
             <b-row class="mt-5">
               <b-col>
-                <input
-                  type="text"
+                <DefaultInput
                   name="text"
                   placeholder="نام خود را وارد کنید"
                   id="firstname-input"
@@ -25,8 +24,7 @@
                 </p>
               </b-col>
               <b-col>
-                <input
-                  type="text"
+                <DefaultInput
                   name="text"
                   placeholder="نام خانوادگی خود را وارد کنید"
                   v-model="form.lastname"
@@ -46,8 +44,7 @@
 
             <b-row>
               <b-col class="mb-3">
-                <input
-                  type="text"
+                <NumberInput
                   name="age"
                   placeholder="سن خود را وارد کنید"
                   v-model="form.age"
@@ -64,8 +61,7 @@
                 </p>
               </b-col>
               <b-col class="mb-3">
-                <input
-                  type="text"
+                <NumberInput
                   name="text"
                   placeholder="کد ملی خود را وارد کنید"
                   v-model="form.nationalCode"
@@ -73,6 +69,7 @@
                   class="form-control"
                   :disabled="disableInput"
                 />
+
                 <p
                   v-if="
                     !$v.form.nationalCode.required &&
@@ -88,8 +85,7 @@
 
             <b-row>
               <b-col>
-                <input
-                  type="text"
+                <DefaultInput
                   name="text"
                   placeholder="شغل خود را وارد کنید"
                   v-model="form.job"
@@ -109,8 +105,7 @@
                 </p>
               </b-col>
               <b-col>
-                <input
-                  type="text"
+                <DefaultInput
                   name="text"
                   placeholder="مدرک تحصیلی خود را وارد کنید"
                   v-model="form.educationDegree"
@@ -135,8 +130,7 @@
 
             <b-row>
               <b-col cols="6" class="ml-auto">
-                <input
-                  type="text"
+                <DefaultInput
                   name="text"
                   placeholder="نام مدرسه خود را وارد کنید"
                   v-model="form.schoolName"
@@ -195,7 +189,7 @@
                   @click="saveInfo"
                   id="saveBtn"
                 >
-                  {{ editButton }}
+                  {{ $t("save") }}
                 </button>
                 <button
                   class="btn btn-danger mx-2 px-4 my-2"
@@ -228,7 +222,13 @@
 import { required, requiredIf } from "vuelidate/lib/validators";
 import "animate.css";
 import { form } from "@/constant/variable.js";
+import DefaultInput from "./DefaultInput.vue";
+import NumberInput from "./NumberInputs.vue";
 export default {
+  components: {
+    DefaultInput,
+    NumberInput,
+  },
   props: {
     formInfo: {
       type: Object,
@@ -374,6 +374,7 @@ export default {
 .rtl {
   direction: rtl;
 }
+
 #border {
   border: 1px solid #000;
   margin-top: 20px;

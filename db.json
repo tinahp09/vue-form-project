@@ -1,3 +1,14 @@
 {
-  "people": []
+  "people": [
+    {
+      "firstname": "Tina",
+      "lastname": "Hosseinpour",
+      "nationalCode": "1362791970",
+      "job": "developer",
+      "age": "21",
+      "educationDegree": "master",
+      "schoolName": "",
+      "id": 1
+    }
+  ]
 }
