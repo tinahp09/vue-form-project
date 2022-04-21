@@ -11,17 +11,20 @@ export default {
             state.User = user
         }
     },
+    getters:{
+        GetUser(state) {
+            return state.User
+        }
+    },
     actions: {
         login({ commit }, phoneNumber) {
             client.get('user', { params: { phone: phoneNumber } }).then((response) => {
-                console.log(response);
                 Cookies.set('user', JSON.stringify(response.data[0]))
                 commit('SetUser', response.data[0])
             })
         },
         SetValueWhenRefresh({ commit }) {
             if (Cookies && Cookies.get('user')) {
-                console.log(Cookies.get('user'));
                 let cookieValue = JSON.parse(Cookies.get('user'))
                 commit('SetUser', cookieValue)
             }

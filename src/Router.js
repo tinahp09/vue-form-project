@@ -10,7 +10,7 @@ import { store } from './store/Store'
 Vue.use(Router)
 
 
-export const Routes = [
+const Routes = [
     {
         path: '/',
         component: Home,
@@ -38,5 +38,14 @@ export const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     store.dispatch('SetValueWhenRefresh')
+    if (to.meta.middleware) {
+        console.log(to.meta.middleware);
+        if (to.meta.middleware == 'is-auth' && store.getters.GetUser) {
+            console.log(to.meta.middleware);
+            router.replace('/')
+        } else if (to.meta.middleware == 'is-no-auth' && !store.getters.GetUser) {
+            router.replace('/loginUser')
+        }
+    }
     next()
 })

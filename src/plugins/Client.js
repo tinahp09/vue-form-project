@@ -29,7 +29,7 @@ client.interceptors.response.use(response => {
                 Vue.swal('Error is 402')
                 break;
             case 403:
-                router.push('/loginUser')
+                router.replace('/loginUser')
                 break;
             case 404:
                 Vue.swal('Error is 404')
