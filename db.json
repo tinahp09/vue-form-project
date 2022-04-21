@@ -10,5 +10,17 @@
       "schoolName": "",
       "id": 1
     }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "name": "Tina",
+      "phone": "09149956751"
+    },
+    {
+      "id": 2,
+      "name": "safoora",
+      "phone": "09135731433"
+    }
   ]
 }

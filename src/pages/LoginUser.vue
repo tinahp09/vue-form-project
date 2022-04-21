@@ -1,12 +1,12 @@
 <template>
   <div class="wrapper">
-    <form class="form-signin">
+    <form class="form-signin" v-on:submit.prevent>
       <h2 class="form-signin-heading">Please login</h2>
       <input
         type="text"
         class="form-control"
         name="password"
-        placeholder="Password"
+        placeholder="mobile"
         v-model="phoneNumber"
       />
       <p
@@ -17,7 +17,9 @@
         لطفا موبایل را وارد کنید
       </p>
       <br />
-      <button class="btn btn-lg btn-primary btn-block">Login</button>
+      <button class="btn btn-lg btn-primary btn-block" @click="login">
+        Login
+      </button>
     </form>
   </div>
 </template>
@@ -28,6 +30,11 @@ export default {
     return {
       phoneNumber: "",
     };
+  },
+  methods: {
+    login() {
+      this.$store.dispatch("login", this.phoneNumber);
+    },
   },
   validations: {
     phoneNumber: {

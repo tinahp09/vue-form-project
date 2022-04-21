@@ -172,7 +172,7 @@
                 @click="submit()"
                 type="submit"
               >
-                {{ registerButton }}
+                {{ $t("register") }}
               </button>
               <div v-else>
                 <button
@@ -181,7 +181,7 @@
                   v-if="this.editButton === 'ویرایش'"
                   id="editBtn"
                 >
-                  {{ editButton }}
+                  {{ $t("edit") }}
                 </button>
                 <button
                   class="btn btn-success mx-2 px-3 my-2"
@@ -197,14 +197,14 @@
                   @click="deleteBtn"
                   id="deleteBtn"
                 >
-                  {{ deleteButton }}
+                  {{ $t("delete") }}
                 </button>
                 <button
                   class="btn btn-danger mx-2 px-4 my-2"
                   v-if="this.deleteButton === 'کنسل'"
                   @click="cancelBtn"
                 >
-                  {{ deleteButton }}
+                  {{ $t("cancel") }}
                 </button>
               </div>
             </b-row>

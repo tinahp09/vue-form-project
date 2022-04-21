@@ -3,7 +3,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import App from './App.vue'
 import Vuelidate from 'vuelidate'
 import VueRouter from 'vue-router'
-import { Routes } from './Router.js'
+import { router } from '@/Router'
 import { store } from './store/Store.js'
 import axios from 'axios'
 import { i18n } from './plugins/i18n.js'
@@ -27,10 +27,7 @@ Vue.use(VueAxios, axios)
 Vue.use(VueSweetalert2);
 
 
-const router = new VueRouter({
-  routes: Routes,
-  mode: 'history'
-})
+
 
 
 new Vue({

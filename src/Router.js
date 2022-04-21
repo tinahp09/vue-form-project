@@ -4,6 +4,8 @@ import Form from './pages/registerUser.vue'
 import Dashboard from './pages/dashboard.vue'
 import Home from './pages/Home.vue'
 import LoginUser from './pages/LoginUser.vue'
+import VueRouter from 'vue-router'
+import { store } from './store/Store'
 
 Vue.use(Router)
 
@@ -16,7 +18,7 @@ export const Routes = [
     {
         path: '/form',
         component: Form,
-        meta: { layour: 'registerLogin' }
+        meta: { layout: 'registerLogin', middleware: 'is-no-auth' }
     },
     {
         path: '/dashboard',
@@ -24,6 +26,17 @@ export const Routes = [
     },
     {
         path: '/loginUser',
-        component: LoginUser
+        component: LoginUser,
+        meta: { middleware: 'is-auth' }
     }
 ]
+
+export const router = new VueRouter({
+    routes: Routes,
+    mode: 'history'
+})
+
+router.beforeEach((to, from, next) => {
+    store.dispatch('SetValueWhenRefresh')
+    next()
+})

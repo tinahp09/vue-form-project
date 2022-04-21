@@ -7,7 +7,12 @@ export const i18n = new Vuei18n({
     locale: 'fa',
     messages: {
         'fa': {
-            save: 'ذخیره'
+            save: 'ذخیره',
+            edit: 'ویرایش',
+            register: 'ثبت نام',
+            manager: 'سرپرست',
+            delete: 'حذف',
+            cancel: 'کنسل'
         }
     }
 })
