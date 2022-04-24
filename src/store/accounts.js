@@ -1,7 +1,6 @@
 import { client } from '../plugins/Client'
 import Cookies from 'js-cookie';
-
-
+import {router} from "../Router";
 export default {
     state: {
         User: null
@@ -21,6 +20,7 @@ export default {
             client.get('user', { params: { phone: phoneNumber } }).then((response) => {
                 Cookies.set('user', JSON.stringify(response.data[0]))
                 commit('SetUser', response.data[0])
+                router.replace('/form')
             })
         },
         SetValueWhenRefresh({ commit }) {
