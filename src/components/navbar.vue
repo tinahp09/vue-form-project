@@ -28,10 +28,14 @@
 export default {
   methods: {
     go() {
-      this.$router.push("/form");
+      if (this.$route.path != "/form") {
+        this.$router.push("/form");
+      }
     },
     goLogin() {
-      this.$router.push("/loginUser");
+      if (this.$route.path != "/loginUser") {
+        this.$router.push("/loginUser");
+      }
     },
   },
 };
