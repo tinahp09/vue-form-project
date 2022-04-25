@@ -209,9 +209,6 @@
               </div>
             </b-row>
             <br />
-            <!-- <b-alert show dismissible variant="danger" v-if="errors.length > 0">
-          <span v-for="error in errors" :key="error"> {{ error }} <br /> </span>
-        </b-alert> -->
           </b-form>
         </div>
       </div>

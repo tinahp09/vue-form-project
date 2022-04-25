@@ -39,13 +39,11 @@ export const router = new VueRouter({
 router.beforeEach((to, from, next) => {
     store.dispatch('SetValueWhenRefresh')
     if (to.meta.middleware) {
-        console.log(to.meta.middleware);
         if (to.meta.middleware == 'is-auth' && store.getters.GetUser) {
-            console.log(to.meta.middleware);
-            router.replace('/')
+            router.replace('/form')
         } else if (to.meta.middleware == 'is-no-auth' && !store.getters.GetUser) {
             router.replace('/loginUser')
         }
+        next()
     }
-    next()
 })
