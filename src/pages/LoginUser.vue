@@ -31,6 +31,32 @@ export default {
       phoneNumber: "",
     };
   },
+  created() {
+    let array = [
+      {
+        class: "row row-cols-1 row-cols-md-2 row-cols-lg-3",
+        content: [
+          { type: "text", disabled: false, label: "fullName" },
+          { type: "checkbox", disabled: false, label: "gender" },
+        ],
+      },
+      {
+        class: "row row-cols-1 row-cols-md-2 row-cols-lg-3",
+        content: [
+          { type: "text", disabled: false, label: "mobile" },
+          { type: "password", disabled: false, label: "password" },
+        ],
+      },
+    ];
+
+    let valueOnly = window._.flatMap(array, "content");
+    console.log(valueOnly);
+    let filteredValue = window._.filter(
+      array,
+      (item) => item.content.type === "text"
+    );
+    console.log(filteredValue);
+  },
   methods: {
     login() {
       this.$store.dispatch("login", this.phoneNumber);

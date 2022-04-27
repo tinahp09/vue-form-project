@@ -10,7 +10,7 @@ import { i18n } from './plugins/i18n.js'
 import VueAxios from 'vue-axios'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-
+import lodash from 'lodash'
 
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -26,6 +26,7 @@ Vue.use(VueRouter);
 Vue.use(VueAxios, axios)
 Vue.use(VueSweetalert2);
 
+Vue.prototype._ = lodash 
 
 
 
