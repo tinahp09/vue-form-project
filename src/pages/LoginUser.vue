@@ -34,28 +34,39 @@ export default {
   created() {
     let array = [
       {
-        class: "row row-cols-1 row-cols-md-2 row-cols-lg-3",
         content: [
-          { type: "text", disabled: false, label: "fullName" },
-          { type: "checkbox", disabled: false, label: "gender" },
-        ],
-      },
-      {
-        class: "row row-cols-1 row-cols-md-2 row-cols-lg-3",
-        content: [
-          { type: "text", disabled: false, label: "mobile" },
-          { type: "password", disabled: false, label: "password" },
+          {
+            class: "row row-cols-1 row-cols-md-2 row-cols-lg-3",
+            content: [
+              { type: "text", disabled: "false", label: "fullName" },
+              { type: "checkbox", disabled: "false", label: "gender" },
+            ],
+          },
+          {
+            class: "row row-cols-1 row-cols-md-2 row-cols-lg-3",
+            content: [
+              { type: "text", disabled: "false", label: "mobile" },
+              { type: "password", disabled: "false", label: "password" },
+            ],
+          },
         ],
       },
     ];
 
     let valueOnly = window._.flatMap(array, "content");
     console.log(valueOnly);
-    let filteredValue = window._.filter(
-      array,
-      (item) => item.content.type === "text"
-    );
-    console.log(filteredValue);
+    let filteredVal = window._.filter(array, () => {
+      for (let i = 0; i <= 1; i++) {
+        let contents = valueOnly[i].content;
+        console.log(contents);
+        // for(let n =0; n<=1; n++) {
+          let types = valueOnly[i].content[0].type;
+          console.log(types);
+        // }
+      }
+      
+    });
+    console.log(filteredVal);
   },
   methods: {
     login() {
