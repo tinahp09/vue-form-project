@@ -53,20 +53,23 @@ export default {
       },
     ];
 
-    let valueOnly = window._.flatMap(array, "content");
+    let valueOnly1 = window._.flatMap(array, "content");
+    console.log("Result 1");
+    console.log(valueOnly1);
+    let valueOnly2 = window._.flatMap(valueOnly1, "content");
+    console.log("Result 2");
+    console.log(valueOnly2);
+
+    let valueOnly = window._.flatMap(array, ({content}) => window._.flatMap(content, ({content}) => {
+      console.log('content');
+      console.log(content);
+      return window._.flatMap(content, (item) => {
+        if(item.type == 'text') {
+          return item
+        }
+      })
+    }))
     console.log(valueOnly);
-    let filteredVal = window._.filter(array, () => {
-      for (let i = 0; i <= 1; i++) {
-        let contents = valueOnly[i].content;
-        console.log(contents);
-        // for(let n =0; n<=1; n++) {
-          let types = valueOnly[i].content[0].type;
-          console.log(types);
-        // }
-      }
-      
-    });
-    console.log(filteredVal);
   },
   methods: {
     login() {
