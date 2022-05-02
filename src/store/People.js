@@ -14,6 +14,6 @@ export default {
         },
         deletePeople(context, data) {
             return client.delete(`people/${data.id}`, data)
-        }
+        },
     }
 }

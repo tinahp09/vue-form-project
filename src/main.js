@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import { ButtonPlugin, NavbarPlugin, FormPlugin, LayoutPlugin, FormCheckboxPlugin } from 'bootstrap-vue'
 import App from './App.vue'
 import Vuelidate from 'vuelidate'
 import VueRouter from 'vue-router'
@@ -19,14 +19,17 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false
 
-Vue.use(BootstrapVue)
-Vue.use(IconsPlugin)
+Vue.use(ButtonPlugin)
+Vue.use(NavbarPlugin)
+Vue.use(FormPlugin)
+Vue.use(LayoutPlugin)
+Vue.use(FormCheckboxPlugin)
 Vue.use(Vuelidate)
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios)
 Vue.use(VueSweetalert2);
 
-Vue.prototype._ = lodash 
+Vue.prototype._ = lodash
 
 
 

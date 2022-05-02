@@ -63,7 +63,7 @@ export default {
     let valueOnly = window._.flatMap(array, ({content}) => window._.flatMap(content, ({content}) => {
       console.log('content');
       console.log(content);
-      return window._.flatMap(content, (item) => {
+      return window._.filter(content, (item) => {
         if(item.type == 'text') {
           return item
         }

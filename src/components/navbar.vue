@@ -8,10 +8,26 @@
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
             <b-nav-item text="Lang" right id="nav-item">
-              <a class="btn btn-light text-dark navText ml-2" @click="go"
+              <a
+                v-if="showRegisterButton"
+                class="btn btn-light text-dark navText ml-2"
+                @click="goRegister"
                 >ثبت نام</a
               >
               <a
+                v-if="showLogoutButton"
+                class="btn btn-light text-dark navText ml-2"
+                @click="logout"
+                >خروج</a
+              >
+              <a
+                v-if="showHomeButton"
+                @click="goHome"
+                class="btn btn-light text-dark navText ml-2 px-3"
+                >خانه</a
+              >
+              <a
+                v-if="showLoginButton"
                 class="btn btn-light text-dark navText ml-2 px-3"
                 @click="goLogin"
                 >ورود</a
@@ -26,8 +42,38 @@
 
 <script>
 export default {
+  computed: {
+    showHomeButton() {
+      if (this.$route.path == "/form" || this.$route.path == "/loginUser") {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    showRegisterButton() {
+      if (this.$route.path == "/") {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    showLoginButton() {
+      if (this.$route.path == "/loginUser" || this.$route.path == "/") {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    showLogoutButton() {
+      if (this.$route.path == "/form") {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
   methods: {
-    go() {
+    goRegister() {
       if (this.$route.path != "/form") {
         this.$router.push("/form");
       }
