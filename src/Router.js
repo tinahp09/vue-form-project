@@ -12,7 +12,7 @@ Vue.use(Router)
 
 const Routes = [
     {
-        path: '/home',
+        path: '/',
         component: Home,
     },
     {
@@ -23,6 +23,7 @@ const Routes = [
     {
         path: '/dashboard',
         component: Dashboard,
+        meta: { layout: 'dashboardLayout' }
     },
     {
         path: '/loginUser',
@@ -44,6 +45,8 @@ router.beforeEach((to, from, next) => {
         } else if (to.meta.middleware == 'is-no-auth' && !store.getters.GetUser) {
             router.replace('/loginUser')
         }
+        next()
+    } else {
         next()
     }
 })
