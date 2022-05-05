@@ -1,8 +1,8 @@
 <template>
   <div
-  direction="rtl"
-  dir="rtl"
-  style="direction: rtl"
+    direction="rtl"
+    dir="rtl"
+    style="direction: rtl"
     id="kt_body"
     class="
       header-fixed header-mobile-fixed
