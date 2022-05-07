@@ -14,6 +14,7 @@ const Routes = [
     {
         path: '/',
         component: Home,
+        meta: { layout: 'dashboardLayout' }
     },
     {
         path: '/form',

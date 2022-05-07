@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import RegisterForm from "../components/registerForm.vue";
+import RegisterForm from "../components/RegisterForm.vue";
 import "animate.css";
 import { form } from "@/constant/variable.js";
 export default {
