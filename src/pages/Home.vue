@@ -1,11 +1,14 @@
 <template>
   <div>
-    <DashboardLayout/>
+    <h1>
+      hi tina
+    </h1>
+
   </div>
 </template>
 
 <script>
-  import DashboardLayout from '../layout/DashboardLayout.vue'
+
 export default {
   methods: {},
   data() {
@@ -14,7 +17,6 @@ export default {
     };
   },
   components:{
-    DashboardLayout
   }
 };
 </script>

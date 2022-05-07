@@ -1,5 +1,20 @@
 <template>
   <div id="app">
+   <!-- <div v-if="layout=='defaultLayout'">
+      <default-layout>
+        <router-view></router-view>
+      </default-layout>
+    </div>
+    <div v-if="layout=='registerLogin'">
+      <register-login>
+        <router-view></router-view>
+      </register-login>
+    </div>
+    <div v-if="layout=='dashboardLayout'">
+      <dashboard-layout>
+        <router-view></router-view>
+      </dashboard-layout>
+    </div>-->
     <component :is="layout">
       <router-view></router-view>
     </component>
@@ -15,7 +30,6 @@ export default {
   name: "App",
   data() {
     return {
-      layoutName: "defaultLayout",
     };
   },
   components: {
