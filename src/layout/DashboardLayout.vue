@@ -5,6 +5,7 @@
     style="direction: rtl"
     id="kt_body"
     class="
+    main-div
       header-fixed header-mobile-fixed
       subheader-enabled subheader-fixed
       aside-enabled aside-fixed aside-minimize-hoverable
@@ -3187,4 +3188,7 @@ export default {
 @import "../assets/css/dashboard/rtl/light-menu.rtl.css";
 @import "../assets/css/dashboard/rtl/dark.rtl.css";
 @import "../assets/css/dashboard/rtl/dark-aside.rtl.css";
+.main-div{
+ background-color: #EEF0F8;
+}
 </style>

@@ -14,12 +14,11 @@ const Routes = [
     {
         path: '/',
         component: Home,
-        meta: { layout: 'dashboardLayout' }
     },
     {
         path: '/form',
         component: Form,
-        meta: { layout: 'registerLogin', middleware: 'is-no-auth' }
+        meta: { layout: 'dashboardLayout', middleware: 'is-no-auth' }
     },
     {
         path: '/dashboard',
@@ -29,7 +28,7 @@ const Routes = [
     {
         path: '/loginUser',
         component: LoginUser,
-        meta: { middleware: 'is-auth' }
+        meta: { middleware: 'is-auth',layout: 'dashboardLayout' }
     }
 ]
 
