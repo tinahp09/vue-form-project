@@ -1,8 +1,14 @@
 <template>
-  <div></div>
+  <div>
+    <h1>
+      hi tina
+    </h1>
+
+  </div>
 </template>
 
 <script>
+
 export default {
   methods: {},
   created() {
@@ -42,6 +48,13 @@ export default {
       console.log("fasle");
     }
   },
+  data() {
+    return {
+      filterVal: false,
+    };
+  },
+  components:{
+  }
 };
 </script>
 

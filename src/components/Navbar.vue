@@ -9,15 +9,8 @@
           <b-navbar-nav class="ml-auto">
             <b-nav-item text="Lang" right id="nav-item">
               <a
-                v-if="showRegisterButton"
-                class="btn btn-light text-dark navText ml-2"
-                @click="goRegister"
-                >ثبت نام</a
-              >
-              <a
                 v-if="showLogoutButton"
                 class="btn btn-light text-dark navText ml-2"
-                @click="logout"
                 >خروج</a
               >
               <a
@@ -42,16 +35,10 @@
 
 <script>
 export default {
+  name:'Navbar',
   computed: {
     showHomeButton() {
       if (this.$route.path == "/form" || this.$route.path == "/loginUser") {
-        return true;
-      } else {
-        return false;
-      }
-    },
-    showRegisterButton() {
-      if (this.$route.path == "/") {
         return true;
       } else {
         return false;
@@ -81,6 +68,11 @@ export default {
     goLogin() {
       if (this.$route.path != "/loginUser") {
         this.$router.push("/loginUser");
+      }
+    },
+    goHome() {
+      if (this.$route.path != "/") {
+        this.$router.push("/");
       }
     },
   },
