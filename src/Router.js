@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Form from './pages/registerUser.vue'
+import Dashboard from './pages/dashboard.vue'
+import Home from './pages/Home.vue'
+import LoginUser from './pages/LoginUser.vue'
 import VueRouter from 'vue-router'
 import { store } from './store/Store'
 
@@ -9,22 +13,22 @@ Vue.use(Router)
 const Routes = [
     {
         path: '/',
-        component: import("./pages/Home.vue")
+        component: Home,
     },
     {
         path: '/form',
-        component: import("./pages/registerUser.vue"),
+        component: Form,
         meta: { layout: 'dashboardLayout', middleware: 'is-no-auth' }
     },
     {
         path: '/dashboard',
-        component: import("./pages/dashboard.vue"),
+        component: Dashboard,
         meta: { layout: 'dashboardLayout' }
     },
     {
         path: '/loginUser',
-        component: import("./pages/LoginUser.vue"),
-        meta: { middleware: 'is-auth' }
+        component: LoginUser,
+        meta: { middleware: 'is-auth',layout: 'registerLogin' }
     }
 ]
 

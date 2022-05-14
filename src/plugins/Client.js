@@ -2,7 +2,7 @@ import axios from 'axios'
 import Vue from 'vue'
 import { router } from '../Router'
 export const client = axios.create({
-    baseURL: 'http://localhost:3000/',
+    baseURL: 'http://localhost:4000/',
     headers: {
         'Accept': 'application/json',
         'content_type': 'application/json'
