@@ -1,11 +1,9 @@
 <template>
   <div>
-    <DashboardLayout/>
   </div>
 </template>
 
 <script>
-  import DashboardLayout from '../layout/DashboardLayout.vue'
 export default {
   methods: {},
   data() {
@@ -13,9 +11,6 @@ export default {
       filterVal: false,
     };
   },
-  components:{
-    DashboardLayout
-  }
 };
 </script>
 

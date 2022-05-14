@@ -15,7 +15,6 @@ export default {
   name: "App",
   data() {
     return {
-      layoutName: "defaultLayout",
     };
   },
   components: {
