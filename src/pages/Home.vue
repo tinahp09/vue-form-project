@@ -8,13 +8,18 @@
 </template>
 
 <script>
-
+import Car from "../plugins/Car"
 export default {
+  beforeDestroy() {
+    this.car.destroy()
+    },
   methods: {},
   created() {
-    // let numbers = [2, 5, 6, 4, 3];
+     let numbers = [2, 5, 6, 4, 3];
     // let item = 9;
+    this.car=new Car('peradi',20);
 
+    this.car.age();
     function myFilter(array, num) {
       for (let i = 0; i < array.length; i++) {
         // console.log(array[i])
@@ -51,6 +56,7 @@ export default {
   data() {
     return {
       filterVal: false,
+      car:null
     };
   },
   components:{

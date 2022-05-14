@@ -28,7 +28,7 @@ const Routes = [
     {
         path: '/loginUser',
         component: LoginUser,
-        meta: { middleware: 'is-auth',layout: 'dashboardLayout' }
+        meta: { middleware: 'is-auth',layout: 'registerLogin' }
     }
 ]
 
