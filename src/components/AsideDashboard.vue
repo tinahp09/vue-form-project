@@ -30,10 +30,6 @@
           <!--begin::Menu Nav-->
           <ul class="menu-nav">
             <li class="menu-item menu-item-active" aria-haspopup="true">
-<<<<<<< HEAD
-
-=======
->>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
               <router-link to="/dashboard" class="menu-link">
                 <span class="svg-icon menu-icon">
                   <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
@@ -66,13 +62,7 @@
                   </svg>
                   <!--end::Svg Icon-->
                 </span>
-<<<<<<< HEAD
-
-                <router-link class="menu-text" to="/dashboard">Dashboard</router-link>
-=======
-                <span class="menu-text">Dashboard</span>
-              </router-link>
->>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
+               </router-link>
             </li>
             <li class="menu-section">
               <h4 class="menu-text">Custom</h4>

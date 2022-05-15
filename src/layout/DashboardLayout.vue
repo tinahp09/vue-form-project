@@ -5,10 +5,6 @@
     style="direction: rtl"
     id="kt_body"
     class="
-<<<<<<< HEAD
-=======
-    main-div
->>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
       header-fixed header-mobile-fixed
       subheader-enabled subheader-fixed
       aside-enabled aside-fixed aside-minimize-hoverable
@@ -90,67 +86,10 @@
           <HeaderDashboard />
           <!--end::Header-->
           <!--begin::Content-->
-<<<<<<< HEAD
-          
-          <slot></slot>
-          <!--end::Content-->
-          <!--begin::Footer-->
-=======
 
           <slot></slot>
           <!--end::Content-->
           <!--begin::Footer-->
-          <div
-            class="footer bg-white py-4 d-flex flex-lg-column"
-            id="kt_footer"
-          >
-            <!--begin::Container-->
-            <div
-              class="
-                container-fluid
-                d-flex
-                flex-column flex-md-row
-                align-items-center
-                justify-content-between
-              "
-            >
-              <!--begin::Copyright-->
-              <div class="text-dark order-2 order-md-1">
-                <span class="text-muted font-weight-bold mr-2">2020©</span>
-                <a
-                  href="http://keenthemes.com/metronic"
-                  target="_blank"
-                  class="text-dark-75 text-hover-primary"
-                  >Keenthemes</a
-                >
-              </div>
-              <!--end::Copyright-->
-              <!--begin::Nav-->
-              <div class="nav nav-dark">
-                <a
-                  href="http://keenthemes.com/metronic"
-                  target="_blank"
-                  class="nav-link pl-0 pr-5"
-                  >About</a
-                >
-                <a
-                  href="http://keenthemes.com/metronic"
-                  target="_blank"
-                  class="nav-link pl-0 pr-5"
-                  >Team</a
-                >
-                <a
-                  href="http://keenthemes.com/metronic"
-                  target="_blank"
-                  class="nav-link pl-0 pr-0"
-                  >Contact</a
-                >
-              </div>
-              <!--end::Nav-->
-            </div>
-            <!--end::Container-->
-          </div>
->>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
           <!--end::Footer-->
         </div>
         <!--end::Wrapper-->
@@ -3198,10 +3137,4 @@ export default {
 @import "../assets/css/dashboard/rtl/light-menu.rtl.css";
 @import "../assets/css/dashboard/rtl/dark.rtl.css";
 @import "../assets/css/dashboard/rtl/dark-aside.rtl.css";
-<<<<<<< HEAD
-=======
-.main-div{
- background-color: #EEF0F8;
-}
->>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
 </style>
