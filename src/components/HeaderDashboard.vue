@@ -703,7 +703,6 @@
                   v-if="showLoginBtn"
                   >{{ $t("login") }}</router-link
                 >
-                <i class="menu-arrow"></i>
               </a>
               <div class="menu-submenu menu-submenu-classic menu-submenu-left">
                 <ul class="menu-subnav">
@@ -2385,7 +2384,10 @@
             data-toggle="dropdown"
             data-offset="10px,0px"
           >
-            <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1"></div>
+
+            <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
+              
+            </div>
           </div>
           <!--end::Toggle-->
           <!--begin::Dropdown-->
@@ -2528,3 +2530,5 @@ export default {
   }
 };
 </script>
+
+</template>

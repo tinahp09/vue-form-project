@@ -40,7 +40,12 @@ export default {
       }
     },
   },
+  beforeCreate() {
+console.log('beforeCreate')
+  },
   async created() {
+    window.addEventListener('mousedown',this.customeEvent)
+    console.log('Create')
     await this.$store.dispatch("getPeople").then((res) => {
       this.people = res.data;
     });
@@ -48,7 +53,17 @@ export default {
       this.addForm();
     }
   },
+  beforeDestroy() {
+      this.form.destroy();
+      window.removeEventListener("mousedown")
+
+  },
+  destroyed() {
+  },
   methods: {
+    customeEvent(){
+      console.log('hiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjiii')
+    },
     addForm() {
       this.people.push(JSON.parse(form));
     },

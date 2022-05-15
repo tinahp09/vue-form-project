@@ -35,6 +35,7 @@
 
 <script>
 export default {
+  name:'Navbar',
   computed: {
     showHomeButton() {
       if (this.$route.path == "/form" || this.$route.path == "/loginUser") {
