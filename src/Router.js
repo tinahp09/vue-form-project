@@ -30,7 +30,11 @@ const Routes = [
         path: '/loginUser',
         component: LoginUser,
 <<<<<<< HEAD
+<<<<<<< HEAD
         meta: { middleware: 'is-auth', layout: 'registerLogin' }
+=======
+        meta: { middleware: 'is-auth',layout: 'registerLogin' }
+>>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
 =======
         meta: { middleware: 'is-auth',layout: 'registerLogin' }
 >>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6

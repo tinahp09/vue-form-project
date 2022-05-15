@@ -30,6 +30,13 @@
               data-menu-toggle="click"
               aria-haspopup="true"
             >
+<<<<<<< HEAD
+=======
+              <a href="javascript:;" class="menu-link menu-toggle">
+                <span class="menu-text">Pages</span>
+                <i class="menu-arrow"></i>
+              </a>
+>>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
               <div class="menu-submenu menu-submenu-classic menu-submenu-left">
                 <ul class="menu-subnav">
                   <li class="menu-item menu-item-active" aria-haspopup="true">
@@ -325,7 +332,11 @@
               aria-haspopup="true"
             >
               <a href="javascript:;" class="menu-link menu-toggle">
+<<<<<<< HEAD
                 <span class="menu-text" v-if="showLogoutBtn" @click="logout">{{ $t("logout") }}</span>
+=======
+                <span class="menu-text">Features</span>
+>>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
                 <i class="menu-arrow"></i>
               </a>
               <div
@@ -697,12 +708,17 @@
               aria-haspopup="true"
             >
               <a href="javascript:;" class="menu-link menu-toggle">
+<<<<<<< HEAD
                 <router-link
                   class="menu-text"
                   to="/loginUser"
                   v-if="showLoginBtn"
                   >{{ $t("login") }}</router-link
                 >
+=======
+                <span class="menu-text">Apps</span>
+                <i class="menu-arrow"></i>
+>>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
               </a>
               <div class="menu-submenu menu-submenu-classic menu-submenu-left">
                 <ul class="menu-subnav">
@@ -2384,7 +2400,10 @@
             data-toggle="dropdown"
             data-offset="10px,0px"
           >
+<<<<<<< HEAD
 
+=======
+>>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
             <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
               
             </div>
@@ -2503,6 +2522,7 @@
     </div>
     <!--end::Container-->
   </div>
+<<<<<<< HEAD
 </template>
 
 <script>
@@ -2532,3 +2552,6 @@ export default {
 </script>
 
 </template>
+=======
+</template>
+>>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6

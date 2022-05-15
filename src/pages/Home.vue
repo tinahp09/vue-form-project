@@ -1,19 +1,29 @@
 <template>
   <div>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <DashboardLayout/>
 =======
+=======
+>>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
     <h1>
       hi tina
     </h1>
 
+<<<<<<< HEAD
+>>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
+=======
 >>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
   </div>
 </template>
 
 <script>
 <<<<<<< HEAD
+<<<<<<< HEAD
   import DashboardLayout from '../layout/DashboardLayout.vue'
+=======
+import Car from "../plugins/Car"
+>>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
 =======
 import Car from "../plugins/Car"
 >>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
@@ -22,6 +32,7 @@ export default {
     this.car.destroy()
     },
   methods: {},
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   data() {
@@ -37,6 +48,13 @@ export default {
     // let item = 9;
     this.car=new Car('peradi',20);
 
+=======
+  created() {
+     let numbers = [2, 5, 6, 4, 3];
+    // let item = 9;
+    this.car=new Car('peradi',20);
+
+>>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
     this.car.age();
     function myFilter(array, num) {
       for (let i = 0; i < array.length; i++) {
@@ -78,6 +96,9 @@ export default {
     };
   },
   components:{
+<<<<<<< HEAD
+>>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
+=======
 >>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
   }
 };

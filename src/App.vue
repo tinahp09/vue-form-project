@@ -1,7 +1,10 @@
 <template>
   <div id="app">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
    <!-- <div v-if="layout=='defaultLayout'">
       <default-layout>
         <router-view></router-view>
@@ -17,6 +20,9 @@
         <router-view></router-view>
       </dashboard-layout>
     </div>-->
+<<<<<<< HEAD
+>>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
+=======
 >>>>>>> e4fa75da7a5d48557bf9fa0f2893ac54f0f824f6
     <component :is="layout">
       <router-view></router-view>
