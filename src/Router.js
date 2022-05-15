@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Form from './pages/registerUser.vue'
+import Form from './pages/RegisterUser.vue'
 import Dashboard from './pages/dashboard.vue'
 import Home from './pages/Home.vue'
 import LoginUser from './pages/LoginUser.vue'
@@ -12,22 +12,24 @@ Vue.use(Router)
 
 const Routes = [
     {
-        path: '/home',
+        path: '/',
         component: Home,
+        meta: { layout: 'dashboardLayout' }
     },
     {
         path: '/form',
         component: Form,
-        meta: { layout: 'registerLogin', middleware: 'is-no-auth' }
+        meta: { layout: 'dashboardLayout', middleware: 'is-no-auth' }
     },
     {
         path: '/dashboard',
         component: Dashboard,
+        meta: { layout: 'dashboardLayout' }
     },
     {
         path: '/loginUser',
         component: LoginUser,
-        meta: { middleware: 'is-auth' }
+        meta: { middleware: 'is-auth', layout: 'registerLogin' }
     }
 ]
 
@@ -44,6 +46,8 @@ router.beforeEach((to, from, next) => {
         } else if (to.meta.middleware == 'is-no-auth' && !store.getters.GetUser) {
             router.replace('/loginUser')
         }
+        next()
+    } else {
         next()
     }
 })

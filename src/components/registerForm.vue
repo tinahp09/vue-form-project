@@ -155,7 +155,7 @@
             </b-row>
 
             <b-form-checkbox
-              class="checkbox px-0 ml-4 mt-3"
+              class="checkbox my-3"
               id="checkbox-1"
               name="checkbox-1"
               value="accepted"
@@ -373,15 +373,10 @@ export default {
 }
 
 #border {
-  border: 1px solid #000;
+  border: 1px solid rgb(172, 172, 172);
   margin-top: 20px;
   padding: 0 20px;
   border-radius: 10px;
-  background-color: aliceblue;
-}
-#checkbox-1 {
-  vertical-align: middle;
-  float: right;
 }
 .error {
   border: 2px solid red;
@@ -398,48 +393,18 @@ export default {
   width: 100%;
   height: 100%;
 }
-#label {
-  color: #138496;
-  font-weight: bold;
-  font-size: 2.3em;
-  justify-content: center;
-  display: flex;
-  margin: 60px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.5s ease-in-out;
-}
 input {
   text-align: right;
   width: 100%;
   height: 20px;
   background: #fff;
-  border: 1px solid #000;
   outline: none;
   border-radius: 5px;
   padding: 20px 8px;
   float: right;
 }
-#checkbox-1 {
-  padding: 20px 8px;
-}
-#signup-btn {
-  color: white;
-  font-weight: 400;
-  font-size: 18px;
-  margin-top: 30px;
-  margin-left: auto;
-  display: block;
-}
-#signup-btn:hover {
-  color: #138496;
-  background-color: white;
-  transition: 0.9s;
-  font-weight: 400;
-  border: 2px solid #138496;
-}
 ::placeholder {
-  font-size: 17px;
+  font-size: 14px;
   text-align: right;
 }
 </style>

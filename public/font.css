@@ -1,18 +1,18 @@
 @font-face {
   font-family: "Yekan";
   font-weight: 400;
-  src: url("/fonts//eot/iranyekanwebregular\(fanum\).eot"),
-    url("/fonts/ttf/IRANYekanRegularMobile\(FaNum\).ttf"),
-    url("/fonts/ttf/iranyekanwebregular\(fanum\).ttf"),
-    url("/fonts/woff/iranyekanwebregular\(fanum\).woff"),
-    url("/fonts/woff2/iranyekanwebregular\(fanum\).woff2");
+  src: url("/../fonts//eot/iranyekanwebregular\(fanum\).eot"),
+    url("/../fonts/ttf/IRANYekanRegularMobile\(FaNum\).ttf"),
+    url("/../fonts/ttf/iranyekanwebregular\(fanum\).ttf"),
+    url("/../fonts/woff/iranyekanwebregular\(fanum\).woff"),
+    url("/../fonts/woff2/iranyekanwebregular\(fanum\).woff2");
 }
 @font-face {
   font-family: "Yekan";
   font-weight: 800;
-  src: url("/fonts/eot/iranyekanwebbold\(fanum\).eot"),
-    url("/fonts/ttf/IRANYekanMobileBold\(FaNum\).ttf"),
-    url("/fonts/ttf/iranyekanwebbold\(fanum\).ttf"),
-    url("/fonts/woff/iranyekanwebbold\(fanum\).woff"),
-    url("/fonts/woff2/iranyekanwebbold\(fanum\).woff2");
+  src: url("/../fonts/eot/iranyekanwebbold\(fanum\).eot"),
+    url("/../fonts/ttf/IRANYekanMobileBold\(FaNum\).ttf"),
+    url("/../fonts/ttf/iranyekanwebbold\(fanum\).ttf"),
+    url("/../fonts/woff/iranyekanwebbold\(fanum\).woff"),
+    url("/../fonts/woff2/iranyekanwebbold\(fanum\).woff2");
 }

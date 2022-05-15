@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <component :is="layoutName">
+    <component :is="layout">
       <router-view></router-view>
     </component>
   </div>
@@ -10,6 +10,7 @@
 // import Form from "./components/form.vue";
 import defaultLayout from "./layout/defaultLayout.vue";
 import registerLogin from "./layout/registerLogin.vue";
+import dashboardLayout from "./layout/DashboardLayout.vue";
 export default {
   name: "App",
   data() {
@@ -20,6 +21,7 @@ export default {
   components: {
     defaultLayout,
     registerLogin,
+    dashboardLayout,
   },
   computed: {
     layout() {

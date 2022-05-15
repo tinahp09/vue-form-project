@@ -5,5 +5,7 @@
     "register": "ثبت نام",
     "manager": "سرپرست",
     "delete": "حذف",
-    "cancel": "کنسل"
+    "cancel": "کنسل",
+    "login": "ورود",
+    "logout": "خروج"
 }
