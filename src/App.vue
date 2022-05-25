@@ -10,7 +10,6 @@
 // import Form from "./components/form.vue";
 import defaultLayout from "./layout/defaultLayout.vue";
 import registerLogin from "./layout/registerLogin.vue";
-import dashboardLayout from "./layout/DashboardLayout.vue";
 export default {
   name: "App",
   data() {
@@ -19,8 +18,7 @@ export default {
   },
   components: {
     defaultLayout,
-    registerLogin,
-    dashboardLayout,
+    registerLogin
   },
   computed: {
     layout() {
@@ -34,4 +32,5 @@ export default {
 
 <style>
 </style>
+
 

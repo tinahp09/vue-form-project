@@ -30,10 +30,6 @@
               data-menu-toggle="click"
               aria-haspopup="true"
             >
-              <a href="javascript:;" class="menu-link menu-toggle">
-                <span class="menu-text">Pages</span>
-                <i class="menu-arrow"></i>
-              </a>
               <div class="menu-submenu menu-submenu-classic menu-submenu-left">
                 <ul class="menu-subnav">
                   <li class="menu-item menu-item-active" aria-haspopup="true">
@@ -2533,3 +2529,5 @@ export default {
   }
 };
 </script>
+
+</template>

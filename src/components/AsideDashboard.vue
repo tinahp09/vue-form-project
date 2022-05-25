@@ -62,7 +62,8 @@
                   </svg>
                   <!--end::Svg Icon-->
                 </span>
-               </router-link>
+
+                <router-link class="menu-text" to="/dashboard">Dashboard</router-link>
             </li>
             <li class="menu-section">
               <h4 class="menu-text">Custom</h4>

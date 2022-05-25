@@ -14,17 +14,17 @@ const Routes = [
     {
         path: '/',
         component: Home,
-        meta: { layout: 'dashboardLayout' }
+        meta: {  }
     },
     {
         path: '/form',
         component: Form,
-        meta: { layout: 'dashboardLayout', middleware: 'is-no-auth' }
+        meta: {  middleware: 'is-no-auth' }
     },
     {
         path: '/dashboard',
         component: Dashboard,
-        meta: { layout: 'dashboardLayout' }
+        meta: {  }
     },
     {
         path: '/loginUser',

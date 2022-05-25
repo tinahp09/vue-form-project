@@ -17,7 +17,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 
+import './filters/filter'
+import Plugin from './plugins/myPlugin'
+
 Vue.config.productionTip = false
+
+
+
 
 Vue.use(ButtonPlugin)
 Vue.use(NavbarPlugin)
@@ -28,6 +34,7 @@ Vue.use(Vuelidate)
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios)
 Vue.use(VueSweetalert2);
+Vue.use(Plugin)
 
 Vue.prototype._ = lodash
 

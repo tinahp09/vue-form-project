@@ -86,7 +86,7 @@
           <HeaderDashboard />
           <!--end::Header-->
           <!--begin::Content-->
-
+          
           <slot></slot>
           <!--end::Content-->
           <!--begin::Footer-->
